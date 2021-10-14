@@ -38,7 +38,7 @@ CSS <img align="left" alt="CSS3" width="30px" src="https://raw.githubusercontent
 
 ## How to View and Interact with Retail Portal
 To view on a local machine, please follow these instructions:
-1. Fork the repository and clone to your local machine using `git clone https://github.com/Orcus-FEC/FEC.git`
+1. Fork the repository and clone to your local machine using `git clone`
 2. Generate a github personal access token to access the API and save token securely within file. You can read more about creating a token [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
 3. Run `npm install` to download dependencies.
 4. Run `npm run react-dev` to launch the Webpack bundler.
