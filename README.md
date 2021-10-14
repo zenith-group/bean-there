@@ -1,5 +1,4 @@
-# bean-there
-# HR Front End Capstone - Project Catwalk: Team Orcus
+# HR Blue Ocean -Bean There
 
 ## Table of Contents
 - [Team Members](#team-members-&-roles)
