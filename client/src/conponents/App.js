@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
   }
-  render () {
+  render() {
     return (
-    <div>
-    <h1> Hello from App.js</h1>
-    </div>)
+      <div className="app">
+        <h1>Hello from App.js</h1>
+      </div>
+    );
   }
 }
 
