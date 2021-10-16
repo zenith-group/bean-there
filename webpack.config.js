@@ -1,11 +1,11 @@
-var path = require("path");
+var path = require('path');
 //simport css from 'file.css';
 
 module.exports = {
-  entry: path.join(__dirname, "client/src/index.js"),
+  entry: path.join(__dirname, 'client/src/index.jsx'),
   output: {
-    filename: "bundle.js",
-    path: path.join(__dirname, "client/public")
+    filename: 'bundle.js',
+    path: path.join(__dirname, 'client/public'),
   },
   module: {
     rules: [
@@ -13,19 +13,19 @@ module.exports = {
         test: /\.jsx?/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
       },
       {
         test: /\.css$/,
-        use:[
-          'style-loader',
-          'css-loader'
-        ]
-      }
+        use: ['style-loader', 'css-loader'],
+      },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 };
