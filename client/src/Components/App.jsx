@@ -1,8 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './App.css';
-
-import SearchBar from './SearchBarComponents/SearchBar.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -10,9 +8,8 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className='app'>
+      <div className="app">
         <h1>Hello from App.js</h1>
-        <SearchBar />
       </div>
     );
   }
