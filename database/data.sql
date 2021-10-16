@@ -1,6 +1,6 @@
 -- INSTRUCTIONS:
     -- run this file AFTER running the schema.sql file. This will load data into tables
-    -- COPY requires an absolute path, so replace my absolute path below with yours
+    -- COPY requires an absolute path, so replace my absolute paths below with yours
     -- run command: psql postgres (if not already in postgres terminal)
     -- run command: \c coffee (if not already in coffee DB)
     -- run command: \i data.sql
