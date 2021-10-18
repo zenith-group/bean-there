@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
+import Profile from './Profile/Profile.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,10 @@ class App extends React.Component {
       searchCoffeeList: [],
       inputLocation: null,
       currentLocation: {},
+      loggedin: false,
+      user: {
+        reviews: []
+      }
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
