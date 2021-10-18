@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Profile from './Profile/Profile.jsx';
@@ -18,7 +19,6 @@ class App extends React.Component {
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
-    this.login = this.login.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
@@ -57,15 +57,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='app'>
-        <h1>Hello from App.js</h1>
-        <SearchBar
-          updateSearch={this.updateSearch}
-          updateLocation={this.updateLocation}
-        />
-        <Map />
-        <Profile reviews={this.state.userReviews}/>
-      </div>
+      <Router>
+        <div className='app'>
+          <Switch>
+            <Route exact path='/'>
+              <SearchBar
+                updateSearch={this.updateSearch}
+                updateLocation={this.updateLocation}
+              />
+            </Route>
+            <Route path='/search'>
+              <Map />
+            </Route>
+            <Route path='profile'>
+              <Profile reviews={this.state.userReviews}/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

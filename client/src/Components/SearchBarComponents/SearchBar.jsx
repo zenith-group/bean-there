@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Input from './Input.jsx';
 import Categories from './Categories.jsx';
 import Location from './Location.jsx';
@@ -44,7 +45,7 @@ class SearchBar extends React.Component {
           handleChange={this.handleChange}
         />
         <button onClick={this.props.updateLocation}>⌖</button>
-        <input type='submit' value='Search' />
+        <Link to='/search'><button>Submit</button></Link>
       </form>
     );
   }
