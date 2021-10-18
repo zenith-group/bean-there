@@ -61,7 +61,7 @@ class App extends React.Component {
             <Route path='/search'>
               <Map currentLocation={this.state.currentLocation}/>
             </Route>
-            <Route path='profile'>
+            <Route path='/profile'>
               <Profile reviews={this.state.userReviews}/>
             </Route>
           </Switch>
