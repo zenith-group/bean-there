@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
+import Review from './Review/Review.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +39,6 @@ class App extends React.Component {
       },
     });
   }
-
   render() {
     return (
       <div className='app'>
@@ -48,6 +48,7 @@ class App extends React.Component {
           updateLocation={this.updateLocation}
         />
         <Map />
+        <Review />
       </div>
     );
   }
