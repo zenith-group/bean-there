@@ -26,16 +26,16 @@ class App extends React.Component {
   }
 
   updateLocation() {
-    navigator.geolocation.getCurrentPosition(function (position) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({
+        currentLocation: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
+      });
+
       console.log('Latitude is :', position.coords.latitude);
       console.log('Longitude is :', position.coords.longitude);
-    });
-
-    this.setState({
-      currentLocation: {
-        lat: postion.coords.latitude,
-        lng: postion.coords.longitude,
-      },
     });
   }
 
