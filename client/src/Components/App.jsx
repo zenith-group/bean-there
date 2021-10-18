@@ -13,8 +13,6 @@ class App extends React.Component {
       inputLocation: null,
       currentLocation: {},
     };
-    this.updateSearch = this.updateSearch.bind(this);
-    this.updateLocation = this.updateLocation.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
@@ -25,18 +23,12 @@ class App extends React.Component {
     });
   }
 
-  updateLocation() {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      console.log('Latitude is :', position.coords.latitude);
-      console.log('Longitude is :', position.coords.longitude);
-    });
-
-    this.setState({
-      currentLocation: {
-        lat: postion.coords.latitude,
-        lng: postion.coords.longitude,
-      },
-    });
+  getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+      this.setState({
+        currentLocation: { lat: latitude, lng: longitude }
+      })
+    })
   }
 
   render() {
@@ -44,10 +36,10 @@ class App extends React.Component {
       <div className='app'>
         <h1>Hello from App.js</h1>
         <SearchBar
-          updateSearch={this.updateSearch}
-          updateLocation={this.updateLocation}
+          updateSearch={this.updateSearch.bind(this)}
+          updateLocation={this.getCurrentLocation.bind(this)}
         />
-        <Map />
+        <Map currentLocation={this.state.currentLocation}/>
       </div>
     );
   }
