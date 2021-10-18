@@ -5,6 +5,7 @@ import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
+import SignIn from '../Auth/SignIn.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -66,6 +67,7 @@ class App extends React.Component {
         <Map />
         <Profile reviews={this.state.userReviews}/>
         <SignUp />
+        <SignIn />
       </div>
     );
   }
