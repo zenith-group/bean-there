@@ -18,6 +18,46 @@ const readAll = (dataArray) => {
     });
 };
 
+const readByUser = (dataArray) => {
+  const queryString = `
+  SELECT *
+  FROM reviews
+  WHERE
+  user_id = $1
+  AND report = false
+  LIMIT $2
+  `;
+  return pool
+    .query(queryString, dataArray)
+    .then((data) => {
+      console.log('data: ', data.rows);
+      return data.rows;
+    })
+    .catch((err) => {
+      console.error('Error: ', err);
+    });
+};
+
+const readByStore = (dataArray) => {
+  const queryString = `
+  SELECT *
+  FROM reviews
+  WHERE
+  store_id = $1
+  AND report = false
+  LIMIT $2
+  `;
+  return pool
+    .query(queryString, dataArray)
+    .then((data) => {
+      console.log('data: ', data.rows);
+      return data.rows;
+    })
+    .catch((err) => {
+      console.error('Error: ', err);
+    });
+};
+
 const create = (dataArray) => {
   const queryString = `
   INSERT INTO reviews (
@@ -26,7 +66,8 @@ const create = (dataArray) => {
     coffee_type,
     review_body,
     date,
-    store_id)
+    store_id
+  )
   VALUES ($1, $2, $3, $4, $5, $6)
   `;
   return pool
@@ -42,7 +83,7 @@ const create = (dataArray) => {
 const updateHelpful = (dataArray) => {
   const queryString = `
   UPDATE reviews
-  SET helpful = t
+  SET helpful = true
   WHERE review_id = $1
   `;
   return pool
@@ -58,7 +99,7 @@ const updateHelpful = (dataArray) => {
 const report = (dataArray) => {
   const queryString = `
   UPDATE revuews
-  SET report = t
+  SET report = true
   WHERE id = $1
   `;
   return pool
@@ -73,6 +114,8 @@ const report = (dataArray) => {
 
 module.exports = {
   readAll: readAll,
+  readByUser: readByUser,
+  readByStore: readByStore,
   create: create,
   updateHelpful: updateHelpful,
   report: report,

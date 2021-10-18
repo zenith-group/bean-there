@@ -12,14 +12,42 @@ module.exports = {
         console.error('Error: ', err);
       });
   },
+  getByUser: (req, res) => {
+    let userId = req.params.userId;
+    let count = req.query.count || 10;
+    reviews
+      .readByUser([userId, count])
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        console.error('Error: ', err);
+      });
+  },
+  getByStore: (req, res) => {
+    let storeId = req.params.storeId;
+    let count = req.query.count || 10;
+    reviews
+      .readByStore([storeId, count])
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        console.error('Error: ', err);
+      });
+  },
   post: (req, res) => {
+    let time = new Date().getTime();
+    let formattedTime = new Date(time);
+    console.log(formattedTime);
     let dataArray = [
       req.body.user_id,
       req.body.rating,
       req.body.coffee_type,
       req.body.review_body,
-      new Date().getTime(),
+      formattedTime,
       req.body.store_id,
+      //req.body.coffee_name,
     ];
     reviews
       .create(dataArray)

@@ -16,5 +16,14 @@ app.get('/types', (req, res) => {
 app.get('/reviews', (req, res) => {
   reviews.get(req, res);
 });
+app.get('/reviews/users/:userId', (req, res) => {
+  reviews.getByUser(req, res);
+});
+app.get('/reviews/stores/:storeId', (req, res) => {
+  reviews.getByStore(req, res);
+});
+app.post('/reviews', (req, res) => {
+  reviews.post(req, res);
+})
 
 module.exports = app;
