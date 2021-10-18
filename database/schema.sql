@@ -1,8 +1,10 @@
 -- INSTRUCTIONS TO RUN THIS FILE:
     -- npm install (so postgres will install)
+    -- cd into "database" directory
     -- run command: psql postgres
     -- run command: \i schema.sql
     -- if it works, your two empty tables will print in the console
+    -- now follow the instructions in the "data.sql" file
     -- NOTE: we're using booleans for hot/cold in the coffee_type table. Hot = TRUE, Cold = FALSE
 
 -- Create Database
