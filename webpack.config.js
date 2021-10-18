@@ -1,4 +1,5 @@
 var path = require("path");
+const { SourceMapDevToolPlugin } = require("webpack");
 //simport css from 'file.css';
 
 module.exports = {
@@ -17,6 +18,11 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
+        },
+        {
+          test: /\.js$/,
+          enforce: 'pre',
+          use: ['source-map-loader'],
         },
       },
       {
