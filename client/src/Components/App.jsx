@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Profile from './Profile/Profile.jsx';
@@ -18,8 +19,6 @@ class App extends React.Component {
       loggedin: false,
       userReviews: []
     };
-    this.updateSearch = this.updateSearch.bind(this);
-    this.updateLocation = this.updateLocation.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
@@ -30,45 +29,46 @@ class App extends React.Component {
     });
   }
 
-  updateLocation() {
-    navigator.geolocation.getCurrentPosition((position) => {
+  getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
       this.setState({
-        currentLocation: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        },
-      });
-
-      console.log('Latitude is :', position.coords.latitude);
-      console.log('Longitude is :', position.coords.longitude);
-    });
+        currentLocation: { lat: latitude, lng: longitude }
+      })
+    })
   }
 
-  fetchUserReviews(user_id) {
-    axios.get('/user/reviews', { params: { user_id: user_id } })
-      .then(result => {
-        this.setState({
-          userReviews: result.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
+  // fetchUserReviews = (user_id)  => {
+  //   axios.get('/user/reviews', { params: { user_id: user_id } })
+  //     .then(result => {
+  //       this.setState({
+  //         userReviews: result.data
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     })
+  // };
 
   render() {
     return (
-      <div className='app'>
-        <h1>Hello from App.js</h1>
-        <SearchBar
-          updateSearch={this.updateSearch}
-          updateLocation={this.updateLocation}
-        />
-        <Map />
-        <Profile reviews={this.state.userReviews}/>
-        <SignUp />
-        <SignIn />
-      </div>
+      <Router>
+        <div className='app'>
+          <Switch>
+            <Route exact path='/'>
+              <SearchBar
+                updateSearch={this.updateSearch.bind(this)}
+                updateLocation={this.getCurrentLocation.bind(this)}
+              />
+            </Route>
+            <Route path='/search'>
+              <Map currentLocation={this.state.currentLocation}/>
+            </Route>
+            <Route path='/profile'>
+              <Profile reviews={this.state.userReviews}/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
