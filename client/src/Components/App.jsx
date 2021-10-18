@@ -14,12 +14,11 @@ class App extends React.Component {
       inputLocation: null,
       currentLocation: {},
       loggedin: false,
-      user: {
-        reviews: []
-      }
+      userReviews: []
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
+    this.login = this.login.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
@@ -44,6 +43,18 @@ class App extends React.Component {
     });
   }
 
+  fetchUserReviews(user_id) {
+    axios.get('/user/reviews', { params: { user_id: user_id } })
+      .then(result => {
+        this.setState({
+          userReviews: result.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   render() {
     return (
       <div className='app'>
@@ -53,6 +64,7 @@ class App extends React.Component {
           updateLocation={this.updateLocation}
         />
         <Map />
+        <Profile reviews={this.state.userReviews}/>
       </div>
     );
   }
