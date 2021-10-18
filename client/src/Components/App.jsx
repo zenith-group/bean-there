@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
+import Profile from './Profile/Profile.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,9 +13,12 @@ class App extends React.Component {
       searchCoffeeList: [],
       inputLocation: null,
       currentLocation: {},
+      loggedin: false,
+      userReviews: []
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
+    this.login = this.login.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
@@ -39,6 +43,18 @@ class App extends React.Component {
     });
   }
 
+  fetchUserReviews(user_id) {
+    axios.get('/user/reviews', { params: { user_id: user_id } })
+      .then(result => {
+        this.setState({
+          userReviews: result.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   render() {
     return (
       <div className='app'>
@@ -48,6 +64,7 @@ class App extends React.Component {
           updateLocation={this.updateLocation}
         />
         <Map />
+        <Profile reviews={this.state.userReviews}/>
       </div>
     );
   }
