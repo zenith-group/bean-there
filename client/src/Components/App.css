@@ -1,0 +1,12 @@
+body {
+  background-color: aquamarine;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  justify-content: center;
+}
