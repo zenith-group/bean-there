@@ -11,27 +11,40 @@ class SearchBar extends React.Component {
       location: '',
       categories: [],
     };
-    this.inputChange = this.inputChange.bind(this);
     this.categoriesChange = this.categoriesChange.bind(this);
-    this.locationChange = this.locationChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  inputChange() {}
-  categoriesChange() {}
-  locationChange() {}
+  categoriesChange(options) {
+    this.setState({ categories: options });
+  }
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.updateSearch(
+      this.state.input,
+      this.state.categories,
+      this.state.location
+    );
+  }
 
   render() {
     return (
-      <form>
-        <Input input={this.state.input} handleChange={this.inputChange} />
+      <form className='row center' onSubmit={this.handleSubmit}>
+        <Input input={this.state.input} handleChange={this.handleChange} />
         <Categories
           categories={this.state.categories}
           handleChange={this.categoriesChange}
         />
         <Location
           location={this.state.location}
-          handleChange={this.locationChange}
+          handleChange={this.handleChange}
         />
+        <button onClick={this.props.updateLocation}>⌖</button>
+        <input type='submit' value='Search' />
       </form>
     );
   }
