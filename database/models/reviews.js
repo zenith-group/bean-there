@@ -4,14 +4,14 @@ const readAll = (dataArray) => {
   const queryString = `
   SELECT *
   FROM reviews
-  WHERE store_id = $1
-  AND report = false
+  WHERE report = false
+  LIMIT $1
   `;
   return pool
     .query(queryString, dataArray)
     .then((data) => {
-      console.log('data: ', data);
-      return data;
+      console.log('data: ', data.rows);
+      return data.rows;
     })
     .catch((err) => {
       console.error('Error: ', err);
@@ -20,7 +20,13 @@ const readAll = (dataArray) => {
 
 const create = (dataArray) => {
   const queryString = `
-  INSERT INTO reviews (user_id, rating, coffee_type, review_body, date, store_id)
+  INSERT INTO reviews (
+    user_id,
+    rating,
+    coffee_type,
+    review_body,
+    date,
+    store_id)
   VALUES ($1, $2, $3, $4, $5, $6)
   `;
   return pool
@@ -36,7 +42,7 @@ const create = (dataArray) => {
 const updateHelpful = (dataArray) => {
   const queryString = `
   UPDATE reviews
-  SET helpful = helpful + 1
+  SET helpful = t
   WHERE review_id = $1
   `;
   return pool
