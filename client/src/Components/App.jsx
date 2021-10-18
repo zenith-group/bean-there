@@ -11,7 +11,7 @@ class App extends React.Component {
       searchTerm: '',
       searchCoffeeList: [],
       inputLocation: null,
-      currentLocation: null,
+      currentLocation: {},
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
@@ -31,7 +31,12 @@ class App extends React.Component {
       console.log('Longitude is :', position.coords.longitude);
     });
 
-    this.setState({ currentLocation: location });
+    this.setState({
+      currentLocation: {
+        lat: postion.coords.latitude,
+        lng: postion.coords.longitude,
+      },
+    });
   }
 
   render() {
