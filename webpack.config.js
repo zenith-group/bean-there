@@ -2,7 +2,7 @@ var path = require("path");
 //simport css from 'file.css';
 
 module.exports = {
-  entry: path.join(__dirname, "client/src/index.js"),
+  entry: path.join(__dirname, "client/src/index.jsx"),
   output: {
     filename: "bundle.js",
     path: path.join(__dirname, "client/public")
