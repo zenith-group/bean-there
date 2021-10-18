@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Profile from './Profile/Profile.jsx';
+import SignUp from '../Auth/SignUp.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class App extends React.Component {
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
-    this.login = this.login.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
@@ -65,6 +65,7 @@ class App extends React.Component {
         />
         <Map />
         <Profile reviews={this.state.userReviews}/>
+        <SignUp />
       </div>
     );
   }
