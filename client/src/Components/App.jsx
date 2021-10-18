@@ -25,16 +25,19 @@ class App extends React.Component {
     });
   }
 
-  updateLocation() {
-    navigator.geolocation.getCurrentPosition(function (position) {
+  async updateLocation() {
+    let pos = {};
+    await navigator.geolocation.getCurrentPosition((position) => {
+      pos.latitude = position.coords.latitude;
+      pos.longitude = position.coords.longitude;
       console.log('Latitude is :', position.coords.latitude);
       console.log('Longitude is :', position.coords.longitude);
     });
 
     this.setState({
       currentLocation: {
-        lat: postion.coords.latitude,
-        lng: postion.coords.longitude,
+        lat: pos.latitude,
+        lng: pos.longitude,
       },
     });
   }
