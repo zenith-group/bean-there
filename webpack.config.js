@@ -1,4 +1,5 @@
-var path = require('path');
+var path = require("path");
+const { SourceMapDevToolPlugin } = require("webpack");
 //simport css from 'file.css';
 
 module.exports = {
