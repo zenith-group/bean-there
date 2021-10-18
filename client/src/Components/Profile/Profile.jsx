@@ -1,9 +1,9 @@
 import React from 'react';
 import UserReviews from './UserReviews.jsx';
 
-const Profile = () => (
+const Profile = ({ reviews }) => (
   <div id='profile'>
-    <UserReviews />
+    <UserReviews reviews={reviews}/>
   </div>
 )
 
