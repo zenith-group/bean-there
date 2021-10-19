@@ -4,7 +4,7 @@ import SearchBar from '../SearchBarComponents/SearchBar.jsx';
 
 const Header = ({ loggedin, user, onClick, updateSearch, updateLocation }) => (
   <div id='header' className='header'>
-    <img className='logo' src={'./img/Bean_There.png'} alt='logo' />
+    <Link to='/'><img className='logo' src={'./img/Bean_There.png'} alt='logo' /></Link>
     <SearchBar updateSearch={updateSearch} updateLocation={updateLocation}/>
     <div className='nav-bar'>
       {loggedin ? <button><Link to='/profile'>Accounts</Link></button> : <button><Link to='login'>Login</Link></button>}
