@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
+import Review from './Review/Review.jsx'
 import Profile from './Profile/Profile.jsx';
 
 class App extends React.Component {
