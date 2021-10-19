@@ -2,7 +2,7 @@
 
 import React from 'react';
 import app from './firebase_setup.jsx';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signInWithPopup } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
 
 
@@ -17,6 +17,7 @@ class Login extends React.Component {
     };
   this.handleInputChange = this.handleInputChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.handleGoogle = this.handleGoogle.bind(this);
 }
 
   handleInputChange(e) {
@@ -46,21 +47,49 @@ class Login extends React.Component {
       });
   }
 
+  handleGoogle(e) {
+    e.preventDefault();
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        this.props.authChange();
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  }
+
   render() {
     return (
-      <form className="Login">
-        <h2>Login</h2>
-        <label>
-          Email:
-          <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange}/>
-        </label>
-        <label>
-          Password:
-          <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
-        </label>
-        <input type="submit" value="Login" onClick={this.handleSubmit}/>
-        {this.state.error ? <span>{this.state.error}</span> : null}
-      </form>
+      <div>
+        <form className="Login">
+          <h2>Login</h2>
+          <label>
+            Email:
+            <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange}/>
+          </label>
+          <label>
+            Password:
+            <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
+          </label>
+          <input type="submit" value="Login" onClick={this.handleSubmit}/>
+          {this.state.error ? <span>{this.state.error}</span> : null}
+        </form>
+        <button onClick={this.handleGoogle}>Sign in with Google</button>
+      </div>
     );
   }
 }
