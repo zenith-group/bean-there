@@ -34,7 +34,6 @@ class Login extends React.Component {
         // Signed in
         const user = userCredential.user;
         this.props.authChange();
-        console.log('login successful');
       })
       .catch((error) => {
         const errorCode = error.code;
