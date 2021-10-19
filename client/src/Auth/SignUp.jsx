@@ -41,6 +41,7 @@ class SignUp extends React.Component {
         })
           .then(() => {
             console.log('update successful');
+            this.props.authChange();
           })
           .catch(err => {
             console.log(err);
