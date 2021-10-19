@@ -1,13 +1,10 @@
 import React from 'react';
 import Select from 'react-select';
 
-const options = [
-  { value: 'espresso', label: 'Espresso' },
-  { value: 'latte', label: 'Latte' },
-  { value: 'cappuccino', label: 'Cappuccino' },
-];
-
 const Categories = ({ categories, handleChange }) => {
+  const options = categories.map((category) => {
+    return { value: category, label: category };
+  });
   return <Select isMulti onChange={handleChange} options={options} />;
 };
 
