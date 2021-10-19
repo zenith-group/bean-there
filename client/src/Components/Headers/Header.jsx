@@ -9,7 +9,7 @@ const Header = ({ loggedin, user, onClick, updateSearch, updateLocation }) => (
     <div className='nav-bar'>
       {loggedin ? <button><Link to='/profile'>Accounts</Link></button> : <button><Link to='login'>Login</Link></button>}
       {loggedin ? <button onClick={() => {onClick()}}><Link to='/'>Sign Out</Link></button> : <button><Link to='signup'>Sign Up</Link></button>}
-      {loggedin ? <h3>Welcome, {user.name}</h3> : <h3>Welcome, guest</h3>}
+      {loggedin ? <h3>Welcome, {user.displayName}</h3> : <h3>Welcome, guest</h3>}
     </div>
   </div>
 )

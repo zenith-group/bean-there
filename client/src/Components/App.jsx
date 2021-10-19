@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HomeHeader from './Headers/HomeHeader.jsx';
 import Header from './Headers/Header.jsx';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Review from './Review/Review.jsx'
 import Profile from './Profile/Profile.jsx';
+import SignUp from '../Auth/SignUp.jsx';
+import Login from '../Auth/Login.jsx';
+import { getAuth, signOut } from "firebase/auth";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +21,7 @@ class App extends React.Component {
       searchCoffeeList: [],
       inputLocation: null,
       currentLocation: {},
-      loggedin: true,
+      loggedin: false,
       userReviews: [],
       user: {}
     };
@@ -52,9 +56,38 @@ class App extends React.Component {
   };
 
   onSignoutClick() {
-    this.setState({
-      loggedin: false
-    });
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful
+        this.setState({
+          user: {},
+          loggedin: false
+        });
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
+  authChange() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+      // User is signed in
+      console.log(user)
+      fetchUserReviews(user.uid);
+      this.setState({
+        user: user,
+        loggedin: true
+      });
+    } else {
+      // No user is signed in
+      this.setState({
+        user: null,
+        loggedin: false
+      });
+    }
   }
 
   render() {
@@ -68,6 +101,18 @@ class App extends React.Component {
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
               />
+            </Route>
+            <Route path='/login'>
+              <Login
+                authChange={this.authChange.bind(this)}
+              />
+              {this.state.loggedin ? <Redirect to='/'/> : null}
+            </Route>
+            <Route path='/signup'>
+              <SignUp
+                authChange={this.authChange.bind(this)}
+              />
+              {this.state.loggedin ? <Redirect to='/'/> : null}
             </Route>
             <Route path='/search'>
               <Header
