@@ -2,15 +2,15 @@
 
 import { initializeApp } from 'firebase/app';
 
+// team gmail config:
 const firebaseConfig = {
-  apiKey: "AIzaSyCX93g8WQu_tznHFVl_wMzJuucXtc3axAQ",
-  authDomain: "bean-there-89b8c.firebaseapp.com",
-  projectId: "bean-there-89b8c",
-  storageBucket: "bean-there-89b8c.appspot.com",
-  messagingSenderId: "603111362402",
-  appId: "1:603111362402:web:7badf5d60130491854e63b",
-  measurementId: "G-S99WPRS36D"
-};
+    apiKey: "AIzaSyCR8QIwas5kmDeFld0kau5MoE7aDB9jBJk",
+    authDomain: "bean-there-1a5aa.firebaseapp.com",
+    projectId: "bean-there-1a5aa",
+    storageBucket: "bean-there-1a5aa.appspot.com",
+    messagingSenderId: "496416558832",
+    appId: "1:496416558832:web:62da1faa6c8c6dd869fc35"
+  };
 
 const app = initializeApp(firebaseConfig);
 
