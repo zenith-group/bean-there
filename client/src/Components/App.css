@@ -2,7 +2,10 @@ body {
   background-color: aquamarine;
 }
 
-#home-header button {
+button {
+  height: 38px;
+}
+.nav-bar button {
   height: 25px;
   width: 75px;
   margin: 0 5px;
