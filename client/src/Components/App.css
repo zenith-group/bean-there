@@ -2,9 +2,37 @@ body {
   background-color: aquamarine;
 }
 
+#home-header button {
+  height: 25px;
+  width: 75px;
+  margin: 0 5px;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.nav-bar {
+  display: inline-block;
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+}
+
 .row {
   display: flex;
   flex-direction: row;
+}
+
+#search-bar {
+  margin: auto;
 }
 
 .center {
