@@ -103,12 +103,24 @@ class App extends React.Component {
               />
             </Route>
             <Route path='/login'>
+              <Header
+                loggedin={this.state.loggedin}
+                user={this.state.user}
+                onClick={this.onSignoutClick.bind(this)}
+                updateSearch={this.updateSearch.bind(this)}
+                updateLocation={this.getCurrentLocation.bind(this)}/>
               <Login
                 authChange={this.authChange.bind(this)}
               />
               {this.state.loggedin ? <Redirect to='/'/> : null}
             </Route>
             <Route path='/signup'>
+              <Header
+                loggedin={this.state.loggedin}
+                user={this.state.user}
+                onClick={this.onSignoutClick.bind(this)}
+                updateSearch={this.updateSearch.bind(this)}
+                updateLocation={this.getCurrentLocation.bind(this)}/>
               <SignUp
                 authChange={this.authChange.bind(this)}
               />
