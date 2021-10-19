@@ -34,10 +34,14 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form className='search-bar' className='row center' onSubmit={this.handleSubmit}>
+      <form
+        className='search-bar'
+        className='row center'
+        onSubmit={this.handleSubmit}
+      >
         <Input input={this.state.input} handleChange={this.handleChange} />
         <Categories
-          categories={this.state.categories}
+          categories={this.props.coffeeList}
           handleChange={this.categoriesChange}
         />
         <Location
@@ -45,7 +49,9 @@ class SearchBar extends React.Component {
           handleChange={this.handleChange}
         />
         <button onClick={this.props.updateLocation}>⌖</button>
-        <Link to='/search'><button>Submit</button></Link>
+        <Link to='/search'>
+          <button>Submit</button>
+        </Link>
       </form>
     );
   }
