@@ -6,12 +6,12 @@
     -- run command: \i data.sql
 
 COPY coffee_type (name, temperature)
-FROM '/PATH/TO/FILE/bean-there/database/coffee_type_data.csv' -- REPLACE THIS
+FROM 'PATH/TO/FILE/bean-there/database/coffee_type_data.csv' -- REPLACE THIS
 DELIMITER ',';
 
 
-COPY reviews (user_id, rating, coffee_type, review_body, date, store_id)
-FROM '/PATH/TO/FILE/bean-there/database/reviews_data.csv' -- REPLACE THIS
+COPY reviews (user_id, rating, coffee_type, drink_name, review_body, date, store_id)
+FROM 'PATH/TO/FILE/bean-there/database/reviews.csv' -- REPLACE THIS
 DELIMITER ',' CSV HEADER;
 
 -- -- Run these commands in terminal if you want to test
