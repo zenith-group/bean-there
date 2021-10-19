@@ -12,7 +12,8 @@ class SignUp extends React.Component {
     this.state = {
       email: '',
       password: '',
-      username: ''
+      username: '',
+      error: null
     };
   this.handleInputChange = this.handleInputChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,14 +34,12 @@ class SignUp extends React.Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('sign in successful');
 
         // add username to their profile
         updateProfile(auth.currentUser, {
           displayName: this.state.username
         })
           .then(() => {
-            console.log('update successful');
             this.props.authChange();
           })
           .catch(err => {
@@ -50,7 +49,10 @@ class SignUp extends React.Component {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
+        console.log(errorCode);
+        this.setState({
+          error: 'Please enter a valid email address and password with at least 6 characters.'
+        });
       });
   }
 
@@ -64,13 +66,14 @@ class SignUp extends React.Component {
         </label>
         <label>
           Email:
-          <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange}/>
+          <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange}/>
         </label>
         <label>
           Password:
-          <input type="text" name="password" value={this.state.password} onChange={this.handleInputChange}/>
+          <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
         </label>
         <input type="submit" value="Sign Up" onClick={this.handleSubmit}/>
+        {this.state.error ? <span>{this.state.error}</span> : null}
       </form>
     );
   }

@@ -5,7 +5,6 @@ const Categories = ({ categories, handleChange }) => {
   const options = categories.map((category) => {
     return { value: category, label: category };
   });
-
   return <Select isMulti onChange={handleChange} options={options} />;
 };
 

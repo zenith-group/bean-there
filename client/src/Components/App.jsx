@@ -19,6 +19,7 @@ import Login from '../Auth/Login.jsx';
 import { getAuth, signOut } from 'firebase/auth';
 import StoreInfo from './StoreInfo/StoreInfo.jsx';
 import TempList from './StoreInfo/TempList.jsx';
+import Footer from './Footers/Footer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -94,7 +95,6 @@ class App extends React.Component {
 
     if (user) {
       // User is signed in
-      console.log(user);
       this.fetchUserReviews(user.uid);
       this.setState({
         user: user,
@@ -161,13 +161,32 @@ class App extends React.Component {
                 store={this.state.selectedStore}
                 reviews={this.state.reviewsByStore}
               />
+              <Footer />
             </Route>
             <Route path='/login'>
+              <Header
+                loggedin={this.state.loggedin}
+                user={this.state.user}
+                onClick={this.onSignoutClick.bind(this)}
+                updateSearch={this.updateSearch.bind(this)}
+                updateLocation={this.getCurrentLocation.bind(this)}
+                coffeeList={this.state.searchCoffeeList}
+              />
               <Login authChange={this.authChange.bind(this)} />
+              <Footer />
               {this.state.loggedin ? <Redirect to='/' /> : null}
             </Route>
             <Route path='/signup'>
+              <Header
+                loggedin={this.state.loggedin}
+                user={this.state.user}
+                onClick={this.onSignoutClick.bind(this)}
+                updateSearch={this.updateSearch.bind(this)}
+                updateLocation={this.getCurrentLocation.bind(this)}
+                coffeeList={this.state.searchCoffeeList}
+              />
               <SignUp authChange={this.authChange.bind(this)} />
+              <Footer />
               {this.state.loggedin ? <Redirect to='/' /> : null}
             </Route>
             <Route path='/search'>
@@ -177,8 +196,11 @@ class App extends React.Component {
                 onClick={this.onSignoutClick}
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
+                coffeeList={this.state.searchCoffeeList}
               />
               <Map currentLocation={this.state.currentLocation} />
+              <Review />
+              <Footer />
             </Route>
             <Route path='/profile'>
               <Header
@@ -187,8 +209,10 @@ class App extends React.Component {
                 onClick={this.onSignoutClick}
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
+                coffeeList={this.state.searchCoffeeList}
               />
               <Profile reviews={this.state.userReviews} />
+              <Footer />
             </Route>
           </Switch>
         </div>
