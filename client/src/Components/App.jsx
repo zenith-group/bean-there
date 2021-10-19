@@ -16,7 +16,9 @@ import Review from './Review/Review.jsx';
 import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
+import StoreInfo from './StoreInfo/StoreInfo.jsx';
 import { getAuth, signOut } from 'firebase/auth';
+import tempStoreData from '../tempStoreData.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,6 +31,7 @@ class App extends React.Component {
       loggedin: false,
       userReviews: [],
       user: {},
+      selectedStore: tempStoreData,
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -88,7 +91,7 @@ class App extends React.Component {
 
     if (user) {
       // User is signed in
-      console.log(user)
+      console.log(user);
       this.fetchUserReviews(user.uid);
       this.setState({
         user: user,
@@ -135,6 +138,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}
               />
+              <StoreInfo store={this.state.selectedStore} />
             </Route>
             <Route path='/login'>
               <Login authChange={this.authChange.bind(this)} />
