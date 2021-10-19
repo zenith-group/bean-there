@@ -10,7 +10,6 @@ const readAll = (dataArray) => {
   return pool
     .query(queryString, dataArray)
     .then((data) => {
-      console.log('data: ', data.rows);
       return data.rows;
     })
     .catch((err) => {
@@ -30,7 +29,6 @@ const readByUser = (dataArray) => {
   return pool
     .query(queryString, dataArray)
     .then((data) => {
-      console.log('data: ', data.rows);
       return data.rows;
     })
     .catch((err) => {
@@ -50,7 +48,6 @@ const readByStore = (dataArray) => {
   return pool
     .query(queryString, dataArray)
     .then((data) => {
-      console.log('data: ', data.rows);
       return data.rows;
     })
     .catch((err) => {
