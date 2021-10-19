@@ -1,8 +1,15 @@
 import React from 'react';
 import ReviewsList from './ReviewsList.jsx';
 
-const StoreInfo = ({ store }) => {
+const StoreInfo = ({ store, reviews }) => {
+  if (store === null) {
+    return null;
+  }
   let status = store.is_closed ? 'Closed' : 'Open';
+  let phoneNumber = null;
+  if (store.display_phone) {
+    phoneNumber = <li>Phone Number: {store.display_phone}</li>;
+  }
   let address = store.location.display_address.join(', ');
   return (
     <div>
@@ -18,12 +25,12 @@ const StoreInfo = ({ store }) => {
             <li>Store Name: {store.name}</li>
             <li>Address: {address}</li>
             <li>Open Status: {status}</li>
-            <li>Phone Number: {store.display_phone}</li>
+            {phoneNumber}
           </ul>
         </div>
         <div>Reviews</div>
         <div>
-          <ReviewsList reviews={[1, 2, 3]} />
+          <ReviewsList reviews={reviews} />
         </div>
       </div>
     </div>

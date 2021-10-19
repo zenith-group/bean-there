@@ -16,9 +16,9 @@ import Review from './Review/Review.jsx';
 import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
-import StoreInfo from './StoreInfo/StoreInfo.jsx';
 import { getAuth, signOut } from 'firebase/auth';
-import tempStoreData from '../tempStoreData.js';
+import StoreInfo from './StoreInfo/StoreInfo.jsx';
+import TempList from './StoreInfo/TempList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,12 +31,15 @@ class App extends React.Component {
       loggedin: false,
       userReviews: [],
       user: {},
-      selectedStore: tempStoreData,
+      selectedStore: null,
+      reviewsByStore: [],
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.onSignoutClick = this.onSignoutClick.bind(this);
     this.getCoffeeTypes = this.getCoffeeTypes.bind(this);
+    this.selectStore = this.selectStore.bind(this);
+    this.getReviewsByStore = this.getReviewsByStore.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
@@ -118,6 +121,21 @@ class App extends React.Component {
       });
   }
 
+  getReviewsByStore(store) {
+    axios
+      .get(`/reviews/stores/${store.id}`)
+      .then((res) => {
+        this.setState({ selectedStore: store, reviewsByStore: res.data });
+      })
+      .catch((err) => {
+        console.err(err);
+      });
+  }
+
+  selectStore(store) {
+    this.getReviewsByStore(store);
+  }
+
   componentDidMount() {
     this.getCoffeeTypes();
   }
@@ -138,7 +156,11 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}
               />
-              <StoreInfo store={this.state.selectedStore} />
+              <TempList select={this.selectStore} />
+              <StoreInfo
+                store={this.state.selectedStore}
+                reviews={this.state.reviewsByStore}
+              />
             </Route>
             <Route path='/login'>
               <Login authChange={this.authChange.bind(this)} />
