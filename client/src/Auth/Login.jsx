@@ -1,4 +1,4 @@
-// Sign in existing users (https://firebase.google.com/docs/auth/web/start)
+// Login existing users (https://firebase.google.com/docs/auth/web/start)
 
 import React from 'react';
 import app from './firebase_setup.jsx';
@@ -6,7 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
 
 
-class SignIn extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +33,7 @@ class SignIn extends React.Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('sign in successful');
+        console.log('login successful');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -44,8 +44,8 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <form className="SignIn">
-        <h2>Sign In Form</h2>
+      <form className="Login">
+        <h2>Login</h2>
         <label>
           Email:
           <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange}/>
@@ -54,10 +54,10 @@ class SignIn extends React.Component {
           Password:
           <input type="text" name="password" value={this.state.password} onChange={this.handleInputChange}/>
         </label>
-        <input type="submit" value="Sign In" onClick={this.handleSubmit}/>
+        <input type="submit" value="Login" onClick={this.handleSubmit}/>
       </form>
     );
   }
 }
 
-export default SignIn;
+export default Login;

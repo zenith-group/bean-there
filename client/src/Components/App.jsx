@@ -9,7 +9,7 @@ import Map from './Map/Map.jsx';
 import Review from './Review/Review.jsx'
 import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
-import SignIn from '../Auth/SignIn.jsx';
+import Login from '../Auth/Login.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -70,6 +70,12 @@ class App extends React.Component {
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
               />
+            </Route>
+            <Route path='/login'>
+              <Login />
+            </Route>
+            <Route path='/signup'>
+              <SignUp />
             </Route>
             <Route path='/search'>
               <Header
