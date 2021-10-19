@@ -22,7 +22,7 @@ class SimpleMap extends Component {
           bootstrapURLKeys={{ key: KEYS.google }}
           center={this.props.currentLocation}
           defaultCenter={{lat: 0, lng: 0}}
-          defaultZoom={11}
+          defaultZoom={10}
         ></GoogleMapReact>
       </div>
     );

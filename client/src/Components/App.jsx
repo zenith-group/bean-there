@@ -35,6 +35,12 @@ class App extends React.Component {
     })
   }
 
+  searchForLocation = (lat, lng) => {
+    this.setState({
+      currentLocation: {lat: lat, lng: lng}
+    })
+  }
+
   // fetchUserReviews = (user_id)  => {
   //   axios.get('/user/reviews', { params: { user_id: user_id } })
   //     .then(result => {
@@ -56,6 +62,7 @@ class App extends React.Component {
               <SearchBar
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
+                searchForLocation={this.searchForLocation.bind(this)}
               />
             </Route>
             <Route path='/search'>

@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 
-const Location = ({ location, handleChange }) => {
+const Location = ({searchForLocation }) => {
 
   const [autocomplete, setAutoComplete] = useState(null)
 
@@ -10,6 +10,7 @@ const Location = ({ location, handleChange }) => {
     const lat = autocomplete.getPlace().geometry.location.lat()
     const lng = autocomplete.getPlace().geometry.location.lng()
     console.log(lat, lng)
+    searchForLocation(lat, lng)
   }
 
   return (
@@ -17,11 +18,9 @@ const Location = ({ location, handleChange }) => {
       <input
         name='location'
         type='text'
-        value={location}
-        onChange={handleChange}
         placeholder='Location'
       />
-    </Autocomplete>
+    </Autocomplete >
   );
 };
 
