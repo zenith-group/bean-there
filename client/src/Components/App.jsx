@@ -77,6 +77,7 @@ class App extends React.Component {
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}/>
               <Map currentLocation={this.state.currentLocation}/>
+              <Review />
             </Route>
             <Route path='/profile'>
               <Header

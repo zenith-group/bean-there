@@ -40,6 +40,7 @@ class Review extends React.Component {
   }
   hide() {
     this.setState({ show: false });
+    this.setState({submitted:false})
   }
   show() {
     this.setState({ show: true });
