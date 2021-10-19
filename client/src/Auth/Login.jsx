@@ -12,7 +12,8 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      username: ''
+      username: '',
+      error: null
     };
   this.handleInputChange = this.handleInputChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,7 +39,10 @@ class Login extends React.Component {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
+        console.log(errorCode, errorMessage);
+        this.setState({
+          error: 'Please enter a valid email address and password.'
+        });
       });
   }
 
@@ -55,6 +59,7 @@ class Login extends React.Component {
           <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
         </label>
         <input type="submit" value="Login" onClick={this.handleSubmit}/>
+        {this.state.error ? <span>{this.state.error}</span> : null}
       </form>
     );
   }
