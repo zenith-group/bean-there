@@ -1,4 +1,4 @@
-// Sign up new users (https://firebase.google.com/docs/auth/web/start)
+// Sign in existing users (https://firebase.google.com/docs/auth/web/start)
 
 import React from 'react';
 import app from './firebase_setup.jsx';
