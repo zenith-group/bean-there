@@ -31,10 +31,23 @@ body {
   flex-direction: row;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 #search-bar {
   margin: auto;
 }
 
 .center {
   justify-content: center;
+}
+
+.storeImage {
+  align-self: center;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 10%;
+  margin: 1%;
 }
