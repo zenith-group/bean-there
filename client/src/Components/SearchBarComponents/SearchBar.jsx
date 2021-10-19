@@ -50,7 +50,7 @@ class SearchBar extends React.Component {
         />
         <button onClick={this.props.updateLocation}>⌖</button>
         <Link to='/search'>
-          <button>Submit</button>
+          <button>Search</button>
         </Link>
       </form>
     );
