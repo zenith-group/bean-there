@@ -33,14 +33,12 @@ class SignUp extends React.Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('sign in successful');
 
         // add username to their profile
         updateProfile(auth.currentUser, {
           displayName: this.state.username
         })
           .then(() => {
-            console.log('update successful');
             this.props.authChange();
           })
           .catch(err => {
