@@ -171,6 +171,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}/>
               <Map currentLocation={this.state.currentLocation} />
+              <Review />
             </Route>
             <Route path='/profile'>
               <Header
