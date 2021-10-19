@@ -33,14 +33,12 @@ class SignUp extends React.Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('sign in successful');
 
         // add username to their profile
         updateProfile(auth.currentUser, {
           displayName: this.state.username
         })
           .then(() => {
-            console.log('update successful');
             this.props.authChange();
           })
           .catch(err => {
@@ -64,11 +62,11 @@ class SignUp extends React.Component {
         </label>
         <label>
           Email:
-          <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange}/>
+          <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange}/>
         </label>
         <label>
           Password:
-          <input type="text" name="password" value={this.state.password} onChange={this.handleInputChange}/>
+          <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
         </label>
         <input type="submit" value="Sign Up" onClick={this.handleSubmit}/>
       </form>
