@@ -34,7 +34,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form className='row center' onSubmit={this.handleSubmit}>
+      <form className='search-bar' className='row center' onSubmit={this.handleSubmit}>
         <Input input={this.state.input} handleChange={this.handleChange} />
         <Categories
           categories={this.state.categories}

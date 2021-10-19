@@ -1,6 +1,6 @@
 var path = require('path');
 const { SourceMapDevToolPlugin } = require('webpack');
-//simport css from 'file.css';
+// import css from 'file.css';
 
 module.exports = {
   entry: path.join(__dirname, 'client/src/index.jsx'),
