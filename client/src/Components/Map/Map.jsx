@@ -2,31 +2,23 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import KEYS from '/config.js'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Map = (props) => {
+  console.log(props)
 
-class SimpleMap extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      location: {}
-    }
-  }
-
-
-  render() {
-
-    return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '50%' }}>
+  return (
+    // Important! Always set the container height explicitly
+    <div style={{ height: '100vh', width: '50%', display: 'flex' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: KEYS.google }}
-          center={this.props.currentLocation}
+          center={props.currentLocation}
           defaultCenter={{lat: 0, lng: 0}}
-          defaultZoom={11}
+          defaultZoom={15}
+          onChange ={(e) => {
+            console.log(e)
+          }}
         ></GoogleMapReact>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default SimpleMap;
+export default Map;

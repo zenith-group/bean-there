@@ -8,6 +8,8 @@ import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Review from './Review/Review.jsx'
 import Profile from './Profile/Profile.jsx';
+import List from './List/List.jsx'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class App extends React.Component {
       searchTerm: '',
       searchCoffeeList: [],
       inputLocation: null,
-      currentLocation: {},
+      currentLocation: {lat: 40.6782, lng: -73.9442},
       loggedin: true,
       userReviews: [],
       user: {}
@@ -76,7 +78,10 @@ class App extends React.Component {
                 onClick={this.onSignoutClick.bind(this)}
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}/>
-              <Map currentLocation={this.state.currentLocation}/>
+                <div style={{display: 'flex'}}>
+                  <Map currentLocation={this.state.currentLocation}/>
+                  <List currentLocation={this.state.currentLocation}/>
+                </div>
             </Route>
             <Route path='/profile'>
               <Header
