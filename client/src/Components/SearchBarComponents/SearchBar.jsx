@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Input from './Input.jsx';
 import Categories from './Categories.jsx';
 import Location from './Location.jsx';
@@ -33,10 +34,14 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form className='row center' onSubmit={this.handleSubmit}>
+      <form
+        className='search-bar'
+        className='row center'
+        onSubmit={this.handleSubmit}
+      >
         <Input input={this.state.input} handleChange={this.handleChange} />
         <Categories
-          categories={this.state.categories}
+          categories={this.props.coffeeList}
           handleChange={this.categoriesChange}
         />
         <Location
@@ -44,7 +49,9 @@ class SearchBar extends React.Component {
           handleChange={this.handleChange}
         />
         <button onClick={this.props.updateLocation}>⌖</button>
-        <input type='submit' value='Search' />
+        <Link to='/search'>
+          <button>Submit</button>
+        </Link>
       </form>
     );
   }

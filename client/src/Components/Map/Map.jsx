@@ -11,21 +11,6 @@ class SimpleMap extends Component {
       location: {}
     }
   }
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 11
-  };
-
-  componentDidMount(){
-    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      this.setState({
-        location: { lat: latitude, lng: longitude }
-      })
-    })
-  }
 
 
   render() {
@@ -35,9 +20,9 @@ class SimpleMap extends Component {
       <div style={{ height: '100vh', width: '50%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: KEYS.google }}
-          center={this.state.location}
+          center={this.props.currentLocation}
           defaultCenter={{lat: 0, lng: 0}}
-          defaultZoom={this.props.zoom}
+          defaultZoom={11}
         ></GoogleMapReact>
       </div>
     );
