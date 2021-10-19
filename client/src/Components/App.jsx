@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import HomeHeader from './Headers/HomeHeader.jsx';
 import Header from './Headers/Header.jsx';
+import HomePage from './HomePage/HomePage.jsx';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Review from './Review/Review.jsx';
@@ -17,6 +18,7 @@ import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
 import { getAuth, signOut } from 'firebase/auth';
+import Footer from './Footers/Footer.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -88,7 +90,6 @@ class App extends React.Component {
 
     if (user) {
       // User is signed in
-      console.log(user);
       this.fetchUserReviews(user.uid);
       this.setState({
         user: user,
@@ -130,11 +131,12 @@ class App extends React.Component {
                 user={this.state.user}
                 onClick={this.onSignoutClick}
               />
-              <SearchBar
+              <HomePage
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}
               />
+              <Footer />
             </Route>
             <Route path='/login'>
               <Header
@@ -147,6 +149,7 @@ class App extends React.Component {
               <Login
                 authChange={this.authChange.bind(this)}
               />
+              <Footer />
               {this.state.loggedin ? <Redirect to='/'/> : null}
             </Route>
             <Route path='/signup'>
@@ -160,6 +163,7 @@ class App extends React.Component {
               <SignUp
                 authChange={this.authChange.bind(this)}
               />
+              <Footer />
               {this.state.loggedin ? <Redirect to='/'/> : null}
             </Route>
             <Route path='/search'>
@@ -172,6 +176,7 @@ class App extends React.Component {
                 coffeeList={this.state.searchCoffeeList}/>
               <Map currentLocation={this.state.currentLocation} />
               <Review />
+              <Footer />
             </Route>
             <Route path='/profile'>
               <Header
@@ -182,6 +187,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}/>
               <Profile reviews={this.state.userReviews}/>
+              <Footer />
             </Route>
           </Switch>
         </div>
