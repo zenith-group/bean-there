@@ -89,7 +89,6 @@ class App extends React.Component {
 
     if (user) {
       // User is signed in
-      console.log(user);
       this.fetchUserReviews(user.uid);
       this.setState({
         user: user,
