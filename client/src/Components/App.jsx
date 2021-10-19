@@ -56,7 +56,7 @@ class App extends React.Component {
 
   fetchUserReviews(user_id) {
     axios
-      .get(`/reviews/users/?user_id=${user_id}`)
+      .get(`/reviews/users/${user_id}`)
       .then((result) => {
         this.setState({
           userReviews: result.data,
@@ -181,7 +181,7 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}/>
-              <Profile reviews={this.state.userReviews} />
+              <Profile reviews={this.state.userReviews}/>
             </Route>
           </Switch>
         </div>

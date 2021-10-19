@@ -23,7 +23,8 @@ button {
 }
 
 .nav-bar {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: absolute;
   right: 5px;
   bottom: 10px;
@@ -40,4 +41,16 @@ button {
 
 .center {
   justify-content: center;
+}
+
+#user-review-container {
+  margin: 5px auto;
+}
+
+#user-review-container h2 {
+  text-align: center;
+}
+
+.review-container {
+  margin: 2px auto;
 }

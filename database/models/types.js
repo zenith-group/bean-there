@@ -7,7 +7,6 @@ const read = () => {
   return pool
     .query(queryString)
     .then((data) => {
-      console.log('data: ', data.rows);
       return data.rows;
     })
     .catch((err) => {
