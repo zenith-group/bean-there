@@ -7,20 +7,20 @@ import {
   Route,
   Switch,
   Redirect,
-} from 'react-router-dom';
-import HomeHeader from './Headers/HomeHeader.jsx';
-import Header from './Headers/Header.jsx';
-import HomePage from './HomePage/HomePage.jsx';
-import SearchBar from './SearchBarComponents/SearchBar.jsx';
-import Map from './Map/Map.jsx';
-import Review from './Review/Review.jsx';
-import Profile from './Profile/Profile.jsx';
-import SignUp from '../Auth/SignUp.jsx';
-import Login from '../Auth/Login.jsx';
-import { getAuth, signOut } from 'firebase/auth';
-import StoreInfo from './StoreInfo/StoreInfo.jsx';
-import StoreList from './StoreList/StoreList.jsx';
-import Footer from './Footers/Footer.jsx';
+} from "react-router-dom";
+import HomeHeader from "./Headers/HomeHeader.jsx";
+import Header from "./Headers/Header.jsx";
+import HomePage from "./HomePage/HomePage.jsx";
+import SearchBar from "./SearchBarComponents/SearchBar.jsx";
+import Map from "./Map/Map.jsx";
+import Review from "./Review/Review.jsx";
+import Profile from "./Profile/Profile.jsx";
+import SignUp from "../Auth/SignUp.jsx";
+import Login from "../Auth/Login.jsx";
+import { getAuth, signOut } from "firebase/auth";
+import StoreInfo from "./StoreInfo/StoreInfo.jsx";
+import StoreList from "./StoreList/StoreList.jsx";
+import Footer from "./Footers/Footer.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -140,8 +140,9 @@ class App extends React.Component {
     axios
       .get("/coffee")
       .then((res) => {
+        console.log(res.data)
         this.setState({
-          storeList: res.data.businesses,
+          storeList: res.data,
         });
       })
       .catch((err) => {
@@ -211,7 +212,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
               />
-              <div id='search-result'>
+              <div id="search-result">
                 <StoreList
                   select={this.selectStore}
                   storeList={this.state.storeList}

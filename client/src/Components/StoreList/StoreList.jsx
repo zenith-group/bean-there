@@ -1,10 +1,10 @@
-import React from 'react';
-import StoreTile from './StoreTile.jsx';
+import React from "react";
+import StoreTile from "./StoreTile.jsx";
 
 const StoreList = ({ storeList, select, selectedCoffees }) => {
   return (
-    <li id='store-list' className='column'>
-      {storeList.map((store, i) => {
+    <li id="store-list" className="column">
+      {storeList?.map((store, i) => {
         return (
           <StoreTile
             key={i}

@@ -33,6 +33,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <form
         className="search-bar"

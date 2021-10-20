@@ -20,7 +20,7 @@ const Map = (props) => {
         defaultCenter={{ lat: 0, lng: 0 }}
         defaultZoom={11}
       >
-        {props.store.map((store, x) => (
+        {props.store?.map((store, x) => (
           <div
             className={classes.markerContainer}
             lat={store.coordinates.latitude}
