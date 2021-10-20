@@ -30,7 +30,7 @@ class App extends React.Component {
       searchCoffeeList: [],
       allCoffeeList: [],
       inputLocation: null,
-      currentLocation: {},
+      currentLocation: { lat: 40.8456062, lng: -73.9947449 },
       loggedin: false,
       userReviews: [],
       user: {},
@@ -215,8 +215,9 @@ class App extends React.Component {
                 <StoreList
                   select={this.selectStore}
                   storeList={this.state.storeList}
+                  selectedCoffees={this.state.searchCoffeeList}
                 />
-                <Map currentLocation={this.state.currentLocation}/>
+                {/* <Map currentLocation={this.state.currentLocation}/> */}
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
