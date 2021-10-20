@@ -158,11 +158,6 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
               />
-              <TempList select={this.selectStore} />
-              <StoreInfo
-                store={this.state.selectedStore}
-                reviews={this.state.reviewsByStore}
-              />
               <Footer />
             </Route>
             <Route path='/login'>
@@ -202,6 +197,11 @@ class App extends React.Component {
               />
               <Map currentLocation={this.state.currentLocation} />
               <Review />
+              <TempList select={this.selectStore} />
+              <StoreInfo
+                store={this.state.selectedStore}
+                reviews={this.state.reviewsByStore}
+              />
               <Footer />
             </Route>
             <Route path='/profile'>
