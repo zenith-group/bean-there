@@ -38,7 +38,8 @@ button {
   align-items: center;
 }
 
-.SignUp, .Login {
+.SignUp,
+.Login {
   height: 75vh;
   width: 200px;
   margin: 0 auto;
@@ -94,4 +95,10 @@ button {
 #store-list {
   height: 75vh;
   overflow: scroll;
+}
+
+.store-tile {
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
 }
