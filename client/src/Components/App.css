@@ -85,3 +85,13 @@ button {
 .review-container {
   margin: 2px auto;
 }
+
+#search-result {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#store-list {
+  height: 75vh;
+  overflow: scroll;
+}
