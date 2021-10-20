@@ -132,7 +132,7 @@ class App extends React.Component {
               />
               <SearchBar
                 updateSearch={this.updateSearch}
-                updateLocation={this.getCurrentLocation}
+                updateLocation={this.getCurrentLocation.bind(this)}
                 coffeeList={this.state.searchCoffeeList}
               />
             </Route>
