@@ -29,9 +29,9 @@ module.exports = {
             let currentStoreReviews = data[i].rows;
             if (currentStoreReviews[0] !== undefined) {
               storeDetails[currentStoreReviews[0].store_id].reviews = currentStoreReviews;
-              return storeDetails;
             }
           }
+          return storeDetails;
         })
       })
       .catch((err) => {
