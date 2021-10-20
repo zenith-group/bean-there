@@ -33,6 +33,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <form
         className='search-bar'
@@ -50,7 +51,7 @@ class SearchBar extends React.Component {
         />
         <button onClick={this.props.updateLocation}>⌖</button>
         <Link to='/search'>
-          <button>Search</button>
+          <button onClick={this.props.getYelp}>Search</button>
         </Link>
       </form>
     );
