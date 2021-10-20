@@ -12,8 +12,9 @@ button {
 }
 
 .header {
-  position: relative;
+  background: #666;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -25,10 +26,9 @@ button {
 
 .nav-bar {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+  margin-right: 10px;
 }
 
 #home-page {
@@ -84,4 +84,14 @@ button {
 
 .review-container {
   margin: 2px auto;
+}
+
+#search-result {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#store-list {
+  height: 75vh;
+  overflow: scroll;
 }
