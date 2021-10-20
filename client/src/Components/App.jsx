@@ -140,9 +140,12 @@ class App extends React.Component {
     axios
       .get('/coffee')
       .then((res) => {
-        console.log(res.data);
+        let result = [];
+        for (let key in res.data) {
+          result.push(res.data[key]);
+        }
         this.setState({
-          storeList: res.data.businesses,
+          storeList: result,
         });
       })
       .catch((err) => {
@@ -151,7 +154,11 @@ class App extends React.Component {
   }
 
   selectStore(store) {
-    this.getReviewsByStore(store);
+    // this.getReviewsByStore(store);
+    this.setState({
+      selectedStore: store,
+      reviewsByStore: store.reviews
+    })
   }
 
   componentDidMount() {
