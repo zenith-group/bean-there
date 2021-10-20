@@ -7,11 +7,13 @@ class UpdateForm extends React.Component {
     super(props);
     this.state = {
       show: false,
-      newName: null,
-      newPassword: null,
-      newPhotoURL: null
+      newName: '',
+      newPassword: '',
+      newPhoto: '',
+      newEmail: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.hide = this.hide.bind(this);
     this.show = this.show.bind(this);
   }
@@ -20,12 +22,21 @@ class UpdateForm extends React.Component {
     e.preventDefault();
     this.setState({
       show: false
+    }, () => {
+      this.props.makeProfileChange(this.state.newName, this.state.newEmail, this.state.newPassword, this.state.newPhoto);
+      this.setState({
+        newName: '',
+        newPassword: '',
+        newPhoto: '',
+        newEmail: ''
+      })
+    });
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
     })
-
-
-
-
-
   }
 
   hide() {
@@ -54,15 +65,19 @@ class UpdateForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <div>
                 <span className="required">New Username (optional)</span>
-                <input type="text" placeholder={this.props.user.displayName}/>
+                <input onChange={this.handleInputChange} type="text" name="newName" value={this.state.newName} placeholder={this.props.user.displayName}/>
+              </div>
+              <div>
+                <span className="required">New Email (optional)</span>
+                <input onChange={this.handleInputChange} type="text" name="newEmail" value={this.state.newEmail} placeholder={this.props.user.email}/>
               </div>
               <div>
                 <span className="required">New Password (optional)</span>
-                <input type="password" placeholder={"*******"}/>
+                <input onChange={this.handleInputChange} type="password" name="newPassword" value={this.state.newPassword} placeholder={"*******"}/>
               </div>
               <div>
                 <span className="required">New Photo URL (optional)</span>
-                <input type="text" placeholder="Ex: https://example.com/new-picture.jpg"/>
+                <input onChange={this.handleInputChange} type="text" name="newPhoto" value={this.state.newPhoto} placeholder="Ex: https://example.com/new-picture.jpg"/>
               </div>
               <div>
                 <button id="submitButton">Submit</button>
