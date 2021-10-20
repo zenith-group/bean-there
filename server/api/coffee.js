@@ -5,7 +5,7 @@ module.exports = {
   list: (params) => {
     return axios
       .get(
-        `https://api.yelp.com/v3/businesses/search?location=11206&categories=coffee`,
+        `https://api.yelp.com/v3/businesses/search?location=11206&term=coffee`,
         {
           headers: {
             'content-type': 'application/json',
