@@ -1,5 +1,6 @@
 body {
-  background-color: aquamarine;
+  color: #1E1E24;
+  background-color: #EEF4ED;
 }
 
 .red {
@@ -21,7 +22,8 @@ button {
 }
 
 .header {
-  background: #666;
+  background-color: #1E1E24;
+  color: #EEF4ED;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -98,6 +100,9 @@ button {
   overflow: scroll;
 }
 
+.review-list {
+  overflow-x: scroll;
+}
 .store-tile {
   background-color: white;
   border-radius: 5px;

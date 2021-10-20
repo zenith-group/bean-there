@@ -126,7 +126,7 @@ class App extends React.Component {
         this.setState({ allCoffeeList: coffees });
       })
       .catch((err) => {
-        console.err(err);
+        console.log(err);
       });
   }
 
@@ -217,7 +217,7 @@ class App extends React.Component {
                   storeList={this.state.storeList}
                   selectedCoffees={this.state.searchCoffeeList}
                 />
-                {/* <Map currentLocation={this.state.currentLocation}/> */}
+                <Map currentLocation={this.state.currentLocation} store={this.state.storeList}/>
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
