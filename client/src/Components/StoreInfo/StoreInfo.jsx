@@ -12,7 +12,7 @@ const StoreInfo = ({ store, reviews }) => {
   }
   let address = store.location.display_address.join(', ');
   return (
-    <div>
+    <div className='dark-text'>
       <div className='column'>
         Store info
         <div className='row'>

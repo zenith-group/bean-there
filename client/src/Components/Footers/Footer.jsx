@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './Footer.css'
+import './Footer.css';
 
 class Footer extends React.Component {
   constructor(props) {
