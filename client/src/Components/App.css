@@ -20,13 +20,28 @@ button {
 .logo {
   width: 100px;
   height: auto;
+  margin: 10px;
 }
 
 .nav-bar {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: absolute;
-  right: 5px;
+  right: 10px;
   bottom: 10px;
+}
+
+#home-page {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SignUp, .Login {
+  height: 75vh;
+  width: 200px;
+  margin: 0 auto;
 }
 
 .row {
@@ -58,4 +73,15 @@ button {
 .review {
   border-radius: 5px;
   background-color: white;
+}
+#user-review-container {
+  margin: 5px auto;
+}
+
+#user-review-container h2 {
+  text-align: center;
+}
+
+.review-container {
+  margin: 2px auto;
 }
