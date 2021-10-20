@@ -36,6 +36,7 @@ class App extends React.Component {
       user: {},
       selectedStore: null,
       reviewsByStore: [],
+      storeList: [],
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -43,14 +44,20 @@ class App extends React.Component {
     this.getCoffeeTypes = this.getCoffeeTypes.bind(this);
     this.selectStore = this.selectStore.bind(this);
     this.getReviewsByStore = this.getReviewsByStore.bind(this);
+    this.getYelp = this.getYelp.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
-    this.setState({
-      searchTerm: term,
-      searchCoffeeList: coffeeList,
-      inputLocation: location,
-    });
+    this.setState(
+      {
+        searchTerm: term,
+        searchCoffeeList: coffeeList,
+        inputLocation: location,
+      },
+      () => {
+        this.getYelp();
+      }
+    );
   }
 
   getCurrentLocation() {
@@ -124,10 +131,19 @@ class App extends React.Component {
   }
 
   getReviewsByStore(store) {
+    axios.get(`/reviews/stores/${store.id}`).then((res) => {
+      this.setState({ selectedStore: store, reviewsByStore: res.data });
+    });
+  }
+
+  getYelp() {
     axios
-      .get(`/reviews/stores/${store.id}`)
+      .get('/coffee')
       .then((res) => {
-        this.setState({ selectedStore: store, reviewsByStore: res.data });
+        console.log(res.data);
+        this.setState({
+          storeList: res.data.businesses,
+        });
       })
       .catch((err) => {
         console.err(err);
@@ -197,7 +213,10 @@ class App extends React.Component {
               />
               <Map currentLocation={this.state.currentLocation} />
               <Review />
-              <TempList select={this.selectStore} />
+              <TempList
+                select={this.selectStore}
+                storeList={this.state.storeList}
+              />
               <StoreInfo
                 store={this.state.selectedStore}
                 reviews={this.state.reviewsByStore}
