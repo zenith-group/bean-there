@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import HomeHeader from './Headers/HomeHeader.jsx';
 import Header from './Headers/Header.jsx';
+import HomePage from './HomePage/HomePage.jsx';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
 import Review from './Review/Review.jsx';
@@ -57,7 +58,7 @@ class App extends React.Component {
 
   fetchUserReviews(user_id) {
     axios
-      .get(`/reviews/users/?user_id=${user_id}`)
+      .get(`/reviews/users/${user_id}`)
       .then((result) => {
         this.setState({
           userReviews: result.data,
@@ -130,7 +131,7 @@ class App extends React.Component {
                 user={this.state.user}
                 onClick={this.onSignoutClick}
               />
-              <SearchBar
+              <HomePage
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}
@@ -185,7 +186,7 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.searchCoffeeList}/>
-              <Profile reviews={this.state.userReviews} />
+              <Profile reviews={this.state.userReviews}/>
               <Footer />
             </Route>
           </Switch>
