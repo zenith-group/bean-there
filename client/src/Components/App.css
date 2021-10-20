@@ -1,10 +1,20 @@
 body {
-  background-color: aquamarine;
+  color: #1E1E24;
+  background-color: #EEF4ED;
+}
+
+.red {
+  color: #bc005c;
+}
+
+.green {
+  color: #007e5b;
 }
 
 button {
   height: 38px;
 }
+
 .nav-bar button {
   height: 25px;
   width: 75px;
@@ -12,7 +22,8 @@ button {
 }
 
 .header {
-  background: #666;
+  background-color: #1E1E24;
+  color: #EEF4ED;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,14 +74,6 @@ button {
   justify-content: center;
 }
 
-.storeImage {
-  align-self: center;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 10%;
-  margin: 1%;
-}
-
 .review {
   border-radius: 5px;
   background-color: white;
@@ -97,21 +100,29 @@ button {
   overflow: scroll;
 }
 
-#marker_div {
-  background-color: wheat;
-  height: 120px;
+.review-list {
+  overflow-x: scroll;
+}
+.store-tile {
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
+}
+.store-tile-image {
+  align-self: center;
+  border-radius: 50%;
+  margin: 1%;
+  border-radius: 50%;
   width: 100px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
+  max-width: 100px;
+  height: 100px;
+  max-height: 100px;
 }
 
-.marker_img {
-  object-fit: cover;
-}
-
-.marker_img img {
-  height: 50px;
-  width: 50px;
+.storeImage {
+  align-self: center;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 10%;
+  margin: 1%;
 }
