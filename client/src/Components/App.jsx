@@ -30,13 +30,14 @@ class App extends React.Component {
       searchCoffeeList: [],
       allCoffeeList: [],
       inputLocation: null,
-      currentLocation: { lat: 40.650002, lng: -73.949997 },
+      currentLocation: { lat: 40.702501851176706, lng: -73.94245147705078 },
       loggedin: false,
       userReviews: [],
       user: {},
       selectedStore: null,
       reviewsByStore: [],
       storeList: [],
+      storeListObj: {}
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -140,8 +141,14 @@ class App extends React.Component {
     axios
       .get("/coffee")
       .then((res) => {
+        console.log(res.data);
+        let result = [];
+        for (let key in res.data) {
+          result.push(res.data[key]);
+        }
         this.setState({
-          storeList: res.data.businesses,
+          storeList: result,
+          storeListObj: res.data
         });
       })
       .catch((err) => {
@@ -150,7 +157,11 @@ class App extends React.Component {
   }
 
   selectStore(store) {
-    this.getReviewsByStore(store);
+    // this.getReviewsByStore(store);
+    this.setState({
+      selectedStore: this.state.storeListObj[store.id],
+      reviewsByStore: this.state.storeListObj[store.id].reviews
+    })
   }
 
   componentDidMount() {

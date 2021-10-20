@@ -25,14 +25,13 @@ module.exports = {
         }
         return Promise.all(stores)
         .then(data => {
-          // console.log(data[0].rows[0]);
           for (let i = 0; i < data.length; i++ ) {
             let currentStoreReviews = data[i].rows;
             if (currentStoreReviews[0] !== undefined) {
               storeDetails[currentStoreReviews[0].store_id].reviews = currentStoreReviews;
-              return storeDetails;
             }
           }
+          return storeDetails;
         })
       })
       .catch((err) => {
