@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const { reviews, types } = require('./controllers/index.js');
+const { coffee, reviews, types } = require('./controllers/index.js');
 
 let app = express();
 
@@ -22,9 +22,12 @@ app.get('/reviews/users/:userId', (req, res) => {
 app.get('/reviews/stores/:storeId', (req, res) => {
   reviews.getByStore(req, res);
 });
+app.get('/coffee', (req, res) => {
+  coffee.get(req, res);
+});
 app.post('/reviews', (req, res) => {
   reviews.post(req, res);
-})
+});
 
 app.get('/*', function (req, res) {
   res.sendFile(

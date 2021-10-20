@@ -32,19 +32,26 @@ class App extends React.Component {
       loggedin: false,
       userReviews: [],
       user: {},
+      storeList: [],
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.onSignoutClick = this.onSignoutClick.bind(this);
     this.getCoffeeTypes = this.getCoffeeTypes.bind(this);
+    this.getYelp = this.getYelp.bind(this);
   }
 
   updateSearch(term, coffeeList, location) {
-    this.setState({
-      searchTerm: term,
-      searchCoffeeList: coffeeList,
-      inputLocation: location,
-    });
+    this.setState(
+      {
+        searchTerm: term,
+        searchCoffeeList: coffeeList,
+        inputLocation: location,
+      },
+      () => {
+        this.getYelp();
+      }
+    );
   }
 
   getCurrentLocation() {
@@ -111,6 +118,20 @@ class App extends React.Component {
       .then((res) => {
         let coffees = res.data.map((coffeeType) => coffeeType.name);
         this.setState({ allCoffeeList: coffees });
+      })
+      .catch((err) => {
+        console.err(err);
+      });
+  }
+
+  getYelp() {
+    axios
+      .get('/coffee')
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          storeList: res.data.businesses,
+        });
       })
       .catch((err) => {
         console.err(err);
