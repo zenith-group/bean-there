@@ -28,6 +28,7 @@ class App extends React.Component {
     this.state = {
       searchTerm: '',
       searchCoffeeList: [],
+      allCoffeeList: [],
       inputLocation: null,
       currentLocation: {},
       loggedin: false,
@@ -115,7 +116,7 @@ class App extends React.Component {
       .get('/types')
       .then((res) => {
         let coffees = res.data.map((coffeeType) => coffeeType.name);
-        this.setState({ searchCoffeeList: coffees });
+        this.setState({ allCoffeeList: coffees });
       })
       .catch((err) => {
         console.err(err);
@@ -155,7 +156,7 @@ class App extends React.Component {
               <HomePage
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
-                coffeeList={this.state.searchCoffeeList}
+                coffeeList={this.state.allCoffeeList}
               />
               <TempList select={this.selectStore} />
               <StoreInfo
@@ -171,7 +172,7 @@ class App extends React.Component {
                 onClick={this.onSignoutClick.bind(this)}
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
-                coffeeList={this.state.searchCoffeeList}
+                coffeeList={this.state.allCoffeeList}
               />
               <Login authChange={this.authChange.bind(this)} />
               <Footer />
@@ -184,7 +185,7 @@ class App extends React.Component {
                 onClick={this.onSignoutClick.bind(this)}
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
-                coffeeList={this.state.searchCoffeeList}
+                coffeeList={this.state.allCoffeeList}
               />
               <SignUp authChange={this.authChange.bind(this)} />
               <Footer />
@@ -197,7 +198,7 @@ class App extends React.Component {
                 onClick={this.onSignoutClick}
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
-                coffeeList={this.state.searchCoffeeList}
+                coffeeList={this.state.allCoffeeList}
               />
               <Map currentLocation={this.state.currentLocation} />
               <Review />
@@ -210,8 +211,9 @@ class App extends React.Component {
                 onClick={this.onSignoutClick}
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
-                coffeeList={this.state.searchCoffeeList}/>
-              <Profile reviews={this.state.userReviews}/>
+                coffeeList={this.state.allCoffeeList}
+              />
+              <Profile reviews={this.state.userReviews} />
               <Footer />
             </Route>
           </Switch>
