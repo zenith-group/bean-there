@@ -1,8 +1,9 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
 import CoffeeReview from './CoffeeReview.jsx';
+import Review from '../Review/Review.jsx'
 
-const StoreTile = ({ store, select, selectedCoffees }) => {
+const StoreTile = ({ store, select, selectedCoffees, currentUserId, allCoffeeType, loggedin}) => {
   const handleClick = () => {
     select(store);
   };
@@ -37,6 +38,9 @@ const StoreTile = ({ store, select, selectedCoffees }) => {
             starDimension='25px'
             starSpacing='1px'
           />
+          {loggedin && <div id ='reviewButtons'>
+        <Review storeId = {store.id} userId={currentUserId} allCoffeeType={allCoffeeType}/>
+      </div>}
         </div>
       </div>
       <div>{status}</div>

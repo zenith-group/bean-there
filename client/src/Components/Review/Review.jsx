@@ -65,14 +65,13 @@ class Review extends React.Component {
               {this.state.submitted? <div><h1>Thank You For Your Feedback!</h1><button  onClick={this.hide}>Close</button></div>:
             <form onSubmit={this.handleSubmit}>
               <div>
-                <span className="required">Coffee Type: *</span>
+                <span className="required">Coffee Type: </span>
                 <select name="coffee" id="coffeeType">
-                  <option value="None">None</option>
-                  <option value="Espresso">Espresso</option>
-                  <option value="Latte">Latte</option>
-                  <option value="Cappuccino">Cappuccino</option>
-                  <option value="Other">Other</option>
-                </select>
+                        <option>None</option>
+                    {this.props.allCoffeeType.map((type, index)=>
+                        <option value={index+1}>{type}</option>
+                      )}
+                    </select>
               </div>
               <div>
                 <span className="required">Name Of The Coffee: *</span>
@@ -83,20 +82,19 @@ class Review extends React.Component {
                 <br />
                 <StarRating
                   onClick={this.handleClick}
-                  emptySymbol={
-                    <img
-                      src="https://dreyescat.github.io/react-rating/assets/images/star-empty.png"
-                      className="icon"
-                    />
-                  }
-                  fullSymbol={
-                    <img
-                      src="https://dreyescat.github.io/react-rating/assets/images/star-full.png"
-                      className="icon"
-                    />
-                  }
+                  emptySymbol={[
+                    "fas fa-coffee fa-2x empty"
+                  ]}
+                  fullSymbol={[
+                    "fas fa-coffee fa-2x full"
+                  ]}
                   initialRating={this.state.rating}
                 />
+                 {this.state.rating===1? <span id='ratingInfo'>Bummer</span>: ''}
+                {this.state.rating===2? <span id='ratingInfo'>Whatever</span>: ''}
+                {this.state.rating===3? <span id='ratingInfo'>Not bad</span>: ''}
+                {this.state.rating===4? <span id='ratingInfo'>Good</span>: ''}
+                {this.state.rating===5? <span id='ratingInfo'>Awsome!!</span>: ''}
               </div>
               <div>
                 <span className="required">Review: *</span>
