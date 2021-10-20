@@ -30,7 +30,7 @@ class App extends React.Component {
       searchCoffeeList: [],
       allCoffeeList: [],
       inputLocation: null,
-      currentLocation: {},
+      currentLocation: {lat: 40.650002,lng: -73.949997},
       loggedin: false,
       userReviews: [],
       user: {},
@@ -126,7 +126,7 @@ class App extends React.Component {
         this.setState({ allCoffeeList: coffees });
       })
       .catch((err) => {
-        console.err(err);
+        console.log(err);
       });
   }
 
@@ -216,7 +216,7 @@ class App extends React.Component {
                   select={this.selectStore}
                   storeList={this.state.storeList}
                 />
-                <Map currentLocation={this.state.currentLocation}/>
+                <Map currentLocation={this.state.currentLocation} store={this.state.storeList}/>
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
