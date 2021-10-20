@@ -5,7 +5,7 @@ const Categories = ({ categories, handleChange }) => {
   const options = categories.map((category) => {
     return { value: category, label: category };
   });
-  return <Select isMulti onChange={handleChange} options={options} />;
+  return <Select className='dark-text select' isMulti onChange={handleChange} options={options} />;
 };
 
 export default Categories;
