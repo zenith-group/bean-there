@@ -3,7 +3,7 @@ import React from 'react';
 
 const TempList = ({ storeList, select }) => {
   return (
-    <li className='column'>
+    <li id='store-list' className='column'>
       {storeList.map((store, i) => {
         return <StoreButton key={i} store={store} select={select} />;
       })}
