@@ -1,6 +1,16 @@
 #reviewModal {
   color:red;
 }
+.empty{
+ color: rgba(121, 117, 117, 0.9);
+}
+
+#ratingInfo{
+  font-size: x-large;
+  color:white;
+  margin-left: 20px;
+  margin-top: 10px;
+}
 
 #contact-form {
   background-color:rgba(121, 117, 117, 0.9);
@@ -16,6 +26,7 @@
   top:30%;
   transform:scaleY(.01) scaleX(0);
   animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+  z-index: 100;
 }
 
 @keyframes unfoldIn {

@@ -13,7 +13,6 @@ import Header from './Headers/Header.jsx';
 import HomePage from './HomePage/HomePage.jsx';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
-import Review from './Review/Review.jsx';
 import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
@@ -37,6 +36,7 @@ class App extends React.Component {
       selectedStore: null,
       reviewsByStore: [],
       storeList: [],
+      currentUserId:'',
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -101,19 +101,20 @@ class App extends React.Component {
   authChange() {
     const auth = getAuth();
     const user = auth.currentUser;
-
     if (user) {
       // User is signed in
       this.fetchUserReviews(user.uid);
       this.setState({
         user: user,
         loggedin: true,
+        currentUserId: user.uid
       });
     } else {
       // No user is signed in
       this.setState({
         user: null,
         loggedin: false,
+        currentUserId:''
       });
     }
   }
@@ -215,6 +216,9 @@ class App extends React.Component {
                 <StoreList
                   select={this.selectStore}
                   storeList={this.state.storeList}
+                  user = {this.state.currentUserId}
+                  allCoffeeType = {this.state.allCoffeeList}
+                  loggedin = {this.state.loggedin}
                 />
                 <Map currentLocation={this.state.currentLocation}/>
               </div>
@@ -222,7 +226,6 @@ class App extends React.Component {
                 store={this.state.selectedStore}
                 reviews={this.state.reviewsByStore}
               />
-              <Review />
               <Footer />
             </Route>
             <Route path='/profile'>

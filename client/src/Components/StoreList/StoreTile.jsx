@@ -1,6 +1,7 @@
 import React from 'react';
+import Review from '../Review/Review.jsx';
 
-const StoreTile = ({ store, select }) => {
+const StoreTile = ({ store, select, user, allCoffeeType, loggedin}) => {
   const handleClick = () => {
     select(store);
   };
@@ -10,6 +11,9 @@ const StoreTile = ({ store, select }) => {
       <div className='column'>
         <div>{store.name}</div>
       </div>
+      {loggedin && <div id ='reviewButtons'>
+        <Review storeId = {store.id} userId={user} allCoffeeType={allCoffeeType}/>
+      </div>}
     </div>
   );
 };
