@@ -36,23 +36,22 @@ const readByUser = (dataArray) => {
     });
 };
 
-const readByStore = (dataArray) => {
+const readByStore = (id) => {
   const queryString = `
   SELECT *
   FROM reviews
   WHERE
   store_id = $1
   AND report = false
-  LIMIT $2
   `;
   return pool
-    .query(queryString, dataArray)
-    .then((data) => {
-      return data.rows;
-    })
-    .catch((err) => {
-      console.error('Error: ', err);
-    });
+    .query(queryString, [id])
+    // .then((data) => {
+    //   return data.rows;
+    // })
+    // .catch((err) => {
+    //   console.error('Error: ', err);
+    // });
 };
 
 const create = (dataArray) => {
