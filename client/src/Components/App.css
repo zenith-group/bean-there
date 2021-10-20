@@ -49,6 +49,10 @@ button {
   align-items: center;
 }
 
+.dark-text {
+  color: #1E1E24;
+}
+
 .SignUp,
 .Login {
   height: 75vh;
