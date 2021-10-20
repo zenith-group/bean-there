@@ -14,6 +14,7 @@ class SimpleMap extends Component {
 
 
   render() {
+    console.log(this.props.store)
 
     return (
       // Important! Always set the container height explicitly
@@ -23,7 +24,19 @@ class SimpleMap extends Component {
           center={this.props.currentLocation}
           defaultCenter={{lat: 0, lng: 0}}
           defaultZoom={11}
-        ></GoogleMapReact>
+        >
+          {this.props.store.map((store, x) => (
+            <div
+              lat={store.coordinates.latitude}
+              lng={store.coordinates.longitude}
+              key={x}
+            >
+              <div style={{backgroundcolor: 'black', color: 'red'}}>
+                {store.name}
+              </div>
+            </div>
+          ))}
+        </GoogleMapReact>
       </div>
     );
   }
