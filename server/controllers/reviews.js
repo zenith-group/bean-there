@@ -39,7 +39,6 @@ module.exports = {
   post: (req, res) => {
     let time = new Date().getTime();
     let formattedTime = new Date(time);
-    console.log(formattedTime);
     let dataArray = [
       req.body.user_id,
       req.body.rating,
