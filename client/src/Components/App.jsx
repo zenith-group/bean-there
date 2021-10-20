@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Route,
@@ -26,11 +26,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: '',
+      searchTerm: "",
       searchCoffeeList: [],
       allCoffeeList: [],
       inputLocation: null,
-      currentLocation: { lat: 40.8456062, lng: -73.9947449 },
+      currentLocation: { lat: 40.650002, lng: -73.949997 },
       loggedin: false,
       userReviews: [],
       user: {},
@@ -120,7 +120,7 @@ class App extends React.Component {
 
   getCoffeeTypes() {
     axios
-      .get('/types')
+      .get("/types")
       .then((res) => {
         let coffees = res.data.map((coffeeType) => coffeeType.name);
         this.setState({ allCoffeeList: coffees });
@@ -138,9 +138,8 @@ class App extends React.Component {
 
   getYelp() {
     axios
-      .get('/coffee')
+      .get("/coffee")
       .then((res) => {
-        console.log(res.data);
         this.setState({
           storeList: res.data.businesses,
         });
@@ -161,9 +160,9 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className='app'>
+        <div className="app">
           <Switch>
-            <Route exact path='/'>
+            <Route exact path="/">
               <HomeHeader
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -173,10 +172,11 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
+                getYelp={this.getYelp.bind(this)}
               />
               <Footer />
             </Route>
-            <Route path='/login'>
+            <Route path="/login">
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -187,9 +187,9 @@ class App extends React.Component {
               />
               <Login authChange={this.authChange.bind(this)} />
               <Footer />
-              {this.state.loggedin ? <Redirect to='/' /> : null}
+              {this.state.loggedin ? <Redirect to="/" /> : null}
             </Route>
-            <Route path='/signup'>
+            <Route path="/signup">
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -200,9 +200,9 @@ class App extends React.Component {
               />
               <SignUp authChange={this.authChange.bind(this)} />
               <Footer />
-              {this.state.loggedin ? <Redirect to='/' /> : null}
+              {this.state.loggedin ? <Redirect to="/" /> : null}
             </Route>
-            <Route path='/search'>
+            <Route path="/search">
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -217,7 +217,10 @@ class App extends React.Component {
                   storeList={this.state.storeList}
                   selectedCoffees={this.state.searchCoffeeList}
                 />
-                <Map currentLocation={this.state.currentLocation} store={this.state.storeList}/>
+                <Map
+                  currentLocation={this.state.currentLocation}
+                  store={this.state.storeList}
+                />
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
@@ -226,7 +229,7 @@ class App extends React.Component {
               <Review />
               <Footer />
             </Route>
-            <Route path='/profile'>
+            <Route path="/profile">
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
