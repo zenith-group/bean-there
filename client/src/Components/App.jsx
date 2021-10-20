@@ -19,7 +19,7 @@ import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
 import { getAuth, signOut } from 'firebase/auth';
 import StoreInfo from './StoreInfo/StoreInfo.jsx';
-import TempList from './StoreInfo/TempList.jsx';
+import StoreList from './StoreList/StoreList.jsx';
 import Footer from './Footers/Footer.jsx';
 
 class App extends React.Component {
@@ -212,7 +212,7 @@ class App extends React.Component {
                 coffeeList={this.state.allCoffeeList}
               />
               <div id='search-result'>
-                <TempList
+                <StoreList
                   select={this.selectStore}
                   storeList={this.state.storeList}
                 />
