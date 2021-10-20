@@ -19,7 +19,7 @@ import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
 import { getAuth, signOut } from 'firebase/auth';
 import StoreInfo from './StoreInfo/StoreInfo.jsx';
-import TempList from './StoreInfo/TempList.jsx';
+import StoreList from './StoreList/StoreList.jsx';
 import Footer from './Footers/Footer.jsx';
 
 class App extends React.Component {
@@ -30,7 +30,7 @@ class App extends React.Component {
       searchCoffeeList: [],
       allCoffeeList: [],
       inputLocation: null,
-      currentLocation: {},
+      currentLocation: {lat: 40.650002,lng: -73.949997},
       loggedin: false,
       userReviews: [],
       user: {},
@@ -126,7 +126,7 @@ class App extends React.Component {
         this.setState({ allCoffeeList: coffees });
       })
       .catch((err) => {
-        console.err(err);
+        console.log(err);
       });
   }
 
@@ -212,11 +212,11 @@ class App extends React.Component {
                 coffeeList={this.state.allCoffeeList}
               />
               <div id='search-result'>
-                <TempList
+                <StoreList
                   select={this.selectStore}
                   storeList={this.state.storeList}
                 />
-                <Map currentLocation={this.state.currentLocation}/>
+                <Map currentLocation={this.state.currentLocation} store={this.state.storeList}/>
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
