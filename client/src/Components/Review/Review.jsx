@@ -19,10 +19,6 @@ class Review extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target[0].value);
-    console.log(this.state.rating);
-    console.log(e.target[1].value);
-    console.log(e.target[2].value);
     var body = {
       typeOfCoffee: e.target[0].value,
       nameOfDrink: e.target[1].value,

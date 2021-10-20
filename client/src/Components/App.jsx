@@ -144,13 +144,11 @@ class App extends React.Component {
     axios
       .get("/coffee")
       .then((res) => {
-        console.log(res.data);
         let result = [];
         for (let key in res.data) {
           result.push(res.data[key]);
         }
         this.setState({
-          storeList: result,
           storeListObj: res.data
         });
       })
@@ -228,7 +226,7 @@ class App extends React.Component {
               <div id='search-result'>
                 <StoreList
                   select={this.selectStore}
-                  storeList={this.state.storeList}
+                  storeList={Object.values(this.state.storeListObj)}
                   selectedCoffees={this.state.searchCoffeeList}
                   currentUserId = {this.state.currentUserId}
                   allCoffeeType = {this.state.allCoffeeList}
@@ -237,7 +235,7 @@ class App extends React.Component {
                 />
                 <Map
                   currentLocation={this.state.currentLocation}
-                  store={this.state.storeList}
+                  store={Object.values(this.state.storeListObj)}
                 />
               </div>
               <StoreInfo
