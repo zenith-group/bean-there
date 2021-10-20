@@ -1,11 +1,11 @@
 import React from 'react';
-import tempStoreList from './tempStoreList.js';
+//import tempStoreList from './tempStoreList.js';
 
-const TempList = (props) => {
+const TempList = ({ storeList, select }) => {
   return (
     <li className='column'>
-      {tempStoreList.map((store, i) => {
-        return <StoreButton key={i} store={store} select={props.select} />;
+      {storeList.map((store, i) => {
+        return <StoreButton key={i} store={store} select={select} />;
       })}
     </li>
   );
