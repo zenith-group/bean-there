@@ -18,7 +18,7 @@ import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
 import { getAuth, signOut } from 'firebase/auth';
-import Footer from './Footers/Footer.jsx'
+import Footer from './Footers/Footer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,6 +26,7 @@ class App extends React.Component {
     this.state = {
       searchTerm: '',
       searchCoffeeList: [],
+      allCoffeeList: [],
       inputLocation: null,
       currentLocation: {},
       loggedin: false,
@@ -109,7 +110,7 @@ class App extends React.Component {
       .get('/types')
       .then((res) => {
         let coffees = res.data.map((coffeeType) => coffeeType.name);
-        this.setState({ searchCoffeeList: coffees });
+        this.setState({ allCoffeeList: coffees });
       })
       .catch((err) => {
         console.err(err);
@@ -134,7 +135,7 @@ class App extends React.Component {
               <HomePage
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
-                coffeeList={this.state.searchCoffeeList}
+                coffeeList={this.state.allCoffeeList}
               />
               <Footer />
             </Route>
@@ -145,12 +146,11 @@ class App extends React.Component {
                 onClick={this.onSignoutClick.bind(this)}
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
-                coffeeList={this.state.searchCoffeeList}/>
-              <Login
-                authChange={this.authChange.bind(this)}
+                coffeeList={this.state.allCoffeeList}
               />
+              <Login authChange={this.authChange.bind(this)} />
               <Footer />
-              {this.state.loggedin ? <Redirect to='/'/> : null}
+              {this.state.loggedin ? <Redirect to='/' /> : null}
             </Route>
             <Route path='/signup'>
               <Header
@@ -159,12 +159,11 @@ class App extends React.Component {
                 onClick={this.onSignoutClick.bind(this)}
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
-                coffeeList={this.state.searchCoffeeList}/>
-              <SignUp
-                authChange={this.authChange.bind(this)}
+                coffeeList={this.state.allCoffeeList}
               />
+              <SignUp authChange={this.authChange.bind(this)} />
               <Footer />
-              {this.state.loggedin ? <Redirect to='/'/> : null}
+              {this.state.loggedin ? <Redirect to='/' /> : null}
             </Route>
             <Route path='/search'>
               <Header
@@ -173,7 +172,8 @@ class App extends React.Component {
                 onClick={this.onSignoutClick}
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
-                coffeeList={this.state.searchCoffeeList}/>
+                coffeeList={this.state.allCoffeeList}
+              />
               <Map currentLocation={this.state.currentLocation} />
               <Review />
               <Footer />
@@ -185,8 +185,9 @@ class App extends React.Component {
                 onClick={this.onSignoutClick}
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
-                coffeeList={this.state.searchCoffeeList}/>
-              <Profile reviews={this.state.userReviews}/>
+                coffeeList={this.state.allCoffeeList}
+              />
+              <Profile reviews={this.state.userReviews} />
               <Footer />
             </Route>
           </Switch>
