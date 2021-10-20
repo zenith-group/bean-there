@@ -137,6 +137,7 @@ class App extends React.Component {
   }
 
   getYelp() {
+    console.log('getYelp')
     axios
       .get('/coffee')
       .then((res) => {
@@ -173,6 +174,7 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
+                getYelp={this.getYelp.bind(this)}
               />
               <Footer />
             </Route>
