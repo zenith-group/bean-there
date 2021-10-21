@@ -1,0 +1,25 @@
+.store-information {
+  height: 35vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.storeImage {
+  border-radius: 20px;
+  max-width: 30vh;
+  max-height: 30vh;
+  margin: 1vh;
+}
+
+.store-details {
+  display: flex;
+  align-items: center;
+}
+
+.store-reviews {
+  overflow-y: scroll;
+}
+
+.date {
+  margin: 0;
+}

@@ -10,7 +10,7 @@
 DROP DATABASE IF EXISTS coffee;
 CREATE DATABASE coffee;
 -- Connect to Database
-\ c coffee;
+\c coffee;
 -- Create Table 'reviews'
 DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews (
