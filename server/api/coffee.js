@@ -7,7 +7,7 @@ module.exports = {
     let storeDetails = {};
     return axios
       .get(
-        `https://api.yelp.com/v3/businesses/search?location=11206&term=coffee`,
+        `https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=${params.lat}&longitude=${params.lng}`,
         {
           headers: {
             'content-type': 'application/json',

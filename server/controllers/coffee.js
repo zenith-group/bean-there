@@ -1,9 +1,9 @@
 const coffee = require('../api/coffee.js');
 
 module.exports = {
-  get: (req, res) => {
+  get: (req, res, location) => {
     coffee
-      .list()
+      .list(location)
       .then((data) => {
         res.send(data);
       })
