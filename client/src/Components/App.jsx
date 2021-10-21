@@ -1,32 +1,32 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import axios from "axios";
-import "./App.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+import './App.css';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
-} from "react-router-dom";
-import HomeHeader from "./Headers/HomeHeader.jsx";
-import Header from "./Headers/Header.jsx";
-import HomePage from "./HomePage/HomePage.jsx";
-import SearchBar from "./SearchBarComponents/SearchBar.jsx";
-import Map from "./Map/Map.jsx";
-import Review from "./Review/Review.jsx";
-import Profile from "./Profile/Profile.jsx";
-import SignUp from "../Auth/SignUp.jsx";
-import Login from "../Auth/Login.jsx";
-import { getAuth, signOut } from "firebase/auth";
-import StoreInfo from "./StoreInfo/StoreInfo.jsx";
-import StoreList from "./StoreList/StoreList.jsx";
-import Footer from "./Footers/Footer.jsx";
+} from 'react-router-dom';
+import HomeHeader from './Headers/HomeHeader.jsx';
+import Header from './Headers/Header.jsx';
+import HomePage from './HomePage/HomePage.jsx';
+import SearchBar from './SearchBarComponents/SearchBar.jsx';
+import Map from './Map/Map.jsx';
+
+import Profile from './Profile/Profile.jsx';
+import SignUp from '../Auth/SignUp.jsx';
+import Login from '../Auth/Login.jsx';
+import { getAuth, signOut } from 'firebase/auth';
+import StoreInfo from './StoreInfo/StoreInfo.jsx';
+import StoreList from './StoreList/StoreList.jsx';
+import Footer from './Footers/Footer.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: "",
+      searchTerm: '',
       searchCoffeeList: [],
       allCoffeeList: [],
       inputLocation: null,
@@ -36,7 +36,9 @@ class App extends React.Component {
       user: {},
       selectedStore: null,
       reviewsByStore: [],
-      storeListObj: {}
+      storeList: [],
+      storeListObj: {},
+      currentUserId: '',
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -45,6 +47,12 @@ class App extends React.Component {
     this.selectStore = this.selectStore.bind(this);
     this.getReviewsByStore = this.getReviewsByStore.bind(this);
     this.getYelp = this.getYelp.bind(this);
+  }
+
+  changeLocation(lat, lng){
+    this.setState({
+      currentLocation:{lat: lat, lng: lng}
+    })
   }
 
   updateSearch(term, coffeeList, location) {
@@ -108,22 +116,24 @@ class App extends React.Component {
       this.setState({
         user: user,
         loggedin: true,
+        currentUserId: user.uid,
       });
     } else {
       // No user is signed in
       this.setState({
         user: null,
         loggedin: false,
+        currentUserId: '',
       });
     }
   }
 
   getCoffeeTypes() {
     axios
-      .get("/types")
+      .get('/types')
       .then((res) => {
         let coffees = res.data.map((coffeeType) => coffeeType.name);
-        this.setState({ allCoffeeList: coffees });
+        this.setState({ allCoffeeList: res.data });
       })
       .catch((err) => {
         console.log(err);
@@ -138,14 +148,14 @@ class App extends React.Component {
 
   getYelp() {
     axios
-      .get("/coffee")
+      .get('/coffee')
       .then((res) => {
         let result = [];
         for (let key in res.data) {
           result.push(res.data[key]);
         }
         this.setState({
-          storeListObj: res.data
+          storeListObj: res.data,
         });
       })
       .catch((err) => {
@@ -157,8 +167,8 @@ class App extends React.Component {
     // this.getReviewsByStore(store);
     this.setState({
       selectedStore: this.state.storeListObj[store.id],
-      reviewsByStore: this.state.storeListObj[store.id].reviews
-    })
+      reviewsByStore: this.state.storeListObj[store.id].reviews,
+    });
   }
 
   componentDidMount() {
@@ -168,9 +178,9 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="app">
+        <div className='app'>
           <Switch>
-            <Route exact path="/">
+            <Route exact path='/'>
               <HomeHeader
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -181,10 +191,11 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
                 getYelp={this.getYelp.bind(this)}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <Footer />
             </Route>
-            <Route path="/login">
+            <Route path='/login'>
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -192,12 +203,13 @@ class App extends React.Component {
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <Login authChange={this.authChange.bind(this)} />
               <Footer />
-              {this.state.loggedin ? <Redirect to="/" /> : null}
+              {this.state.loggedin ? <Redirect to='/' /> : null}
             </Route>
-            <Route path="/signup">
+            <Route path='/signup'>
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -205,12 +217,13 @@ class App extends React.Component {
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <SignUp authChange={this.authChange.bind(this)} />
               <Footer />
-              {this.state.loggedin ? <Redirect to="/" /> : null}
+              {this.state.loggedin ? <Redirect to='/' /> : null}
             </Route>
-            <Route path="/search">
+            <Route path='/search'>
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -218,12 +231,16 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <div id="search-result">
                 <StoreList
                   select={this.selectStore}
                   storeList={Object.values(this.state.storeListObj)}
                   selectedCoffees={this.state.searchCoffeeList}
+                  currentUserId={this.state.currentUserId}
+                  allCoffeeType={this.state.allCoffeeList}
+                  loggedin={this.state.loggedin}
                 />
                 <Map
                   currentLocation={this.state.currentLocation}
@@ -234,10 +251,9 @@ class App extends React.Component {
                 store={this.state.selectedStore}
                 reviews={this.state.reviewsByStore}
               />
-              <Review />
               <Footer />
             </Route>
-            <Route path="/profile">
+            <Route path='/profile'>
               <Header
                 loggedin={this.state.loggedin}
                 user={this.state.user}
@@ -245,8 +261,13 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
-              <Profile reviews={this.state.userReviews} />
+              <Profile
+                reviews={this.state.userReviews}
+                user={this.state.user}
+                authChange={this.authChange.bind(this)}
+              />
               <Footer />
             </Route>
           </Switch>

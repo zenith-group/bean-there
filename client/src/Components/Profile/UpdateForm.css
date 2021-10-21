@@ -2,19 +2,7 @@
   color:red;
 }
 
-.empty{
-  color: rgba(121, 117, 117, 0.9);
- }
-
- #ratingInfo{
-   font-size: x-large;
-   color:white;
-   margin-left: 20px;
-   margin-top: 10px;
- }
-
-
-#contact-form {
+#update-form {
   background-color:rgba(121, 117, 117, 0.9);
   padding: 10px 20px 30px 20px;
   max-width:100%;
@@ -28,7 +16,6 @@
   top:30%;
   transform:scaleY(.01) scaleX(0);
   animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-  z-index: 2;
 }
 
 @keyframes unfoldIn {
@@ -44,12 +31,12 @@
 }
 
 
-#contact-form input,
-#contact-form select,
-#contact-form textarea,
-#contact-form input,
-#contact-form select,
-#contact-form textarea {
+#update-form input,
+#update-form select,
+#update-form textarea,
+#update-form input,
+#update-form select,
+#update-form textarea {
   width:100%;
   background: #fff;
   border: 0;
@@ -59,16 +46,16 @@
   margin-bottom: 25px;
   padding: 5px;
 }
-#contact-form input:focus,
-#contact-form select:focus,
-#contact-form textarea:focus {
+#update-form input:focus,
+#update-form select:focus,
+#update-form textarea:focus {
   background-color: #E5E6E7;
 }
-#contact-form textarea {
+#update-form textarea {
   width:100%;
   height: 150px;
 }
-#addButton{
+#updateButton{
   cursor:pointer;
   border:none;
   background:#991D57;
@@ -101,7 +88,7 @@
   -moz-transition:background 0.3s ease-in-out;
   transition:background-color 0.3s ease-in-out;
 }
-#addButton:hover {
+#updateButton:hover {
   background-image:linear-gradient(bottom, #9C215A 0%, #A82767 52%);
   background-image:-moz-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
   background-image:-webkit-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
@@ -109,7 +96,7 @@
   -moz-transition:background 0.3s ease-in-out;
   transition:background-color 0.3s ease-in-out;
 }
-#contact-form button[type="submit"]:active {
+#update-form button[type="submit"]:active {
   box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
 }
 input:required, textarea:required {
@@ -118,14 +105,14 @@ input:required, textarea:required {
   -webkit-box-shadow: none;
   -o-box-shadow: none;
 }
-#contact-form .required {
+#update-form .required {
   font-weight:bold;
   color: #E5E6E7;
 }
 
 /* Make form look nice on smaller screens */
 @media only screen and (max-width: 580px) {
-  #contact-form{
+  #update-form{
      left: 3%;
      margin-right: 3%;
      width: 88%;

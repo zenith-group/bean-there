@@ -47,9 +47,9 @@ class SearchBar extends React.Component {
         />
         <Location
           location={this.state.location}
-          handleChange={this.handleChange}
+          changeLocation={this.props.changeLocation}
         />
-        <button onClick={this.props.updateLocation}>⌖</button>
+        <i onClick={this.props.updateLocation}>⌖</i>
         <Link to="/search">
           <button onClick={this.props.getYelp}>Search</button>
         </Link>
