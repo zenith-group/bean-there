@@ -60,11 +60,12 @@ const create = (dataArray) => {
     user_id,
     rating,
     coffee_type,
+    drink_name,
     review_body,
     date,
     store_id
   )
-  VALUES ($1, $2, $3, $4, $5, $6)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
   `;
   return pool
     .query(queryString, dataArray)

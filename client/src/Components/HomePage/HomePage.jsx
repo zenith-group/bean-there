@@ -9,6 +9,9 @@ const HomePage = ({ getYelp, updateSearch, updateLocation, coffeeList }) => (
       coffeeList={coffeeList}
       getYelp={getYelp}
     />
+    {/* <div className='shape'><i class="far fa-circle"></i></div>
+    <div className='shape'><i class="far fa-square"></i></div>
+    <div className='shape'></div> */}
   </div>
 );
 

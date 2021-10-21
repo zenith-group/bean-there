@@ -20,10 +20,12 @@ class Review extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     var body = {
-      typeOfCoffee: e.target[0].value,
-      nameOfDrink: e.target[1].value,
+      user_id:this.props.userId,
+      coffee_type: e.target[0].value,
+      coffee_name: e.target[1].value,
+      store_id:this.props.storeId,
       rating: this.state.rating,
-      review: e.target[2].value
+      review_body: e.target[2].value,
     };
     this.setState({submitted:true})
     axios.post("/reviews", body).then((respond) => {
@@ -39,7 +41,12 @@ class Review extends React.Component {
     this.setState({submitted:false})
   }
   show() {
-    this.setState({ show: true });
+    if(this.state.show === true){
+      this.setState({ show: false })
+      console.loh('show')
+    } else {
+      this.setState({ show: true });
+    }
   }
   render() {
     return (
