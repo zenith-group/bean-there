@@ -24,7 +24,6 @@ class UserInfo extends React.Component {
 
     // if email changed
     if (newEmail !== '') {
-      console.log(newEmail)
       promises.push(updateEmail(this.props.user, newEmail));
     }
 

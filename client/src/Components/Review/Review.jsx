@@ -29,7 +29,7 @@ class Review extends React.Component {
     };
     this.setState({submitted:true})
     axios.post("/reviews", body).then((respond) => {
-      console.log(respond);
+      // console.log(respond);
     });
   }
 
