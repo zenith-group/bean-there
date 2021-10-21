@@ -261,6 +261,7 @@ class App extends React.Component {
               <StoreInfo
                 store={this.state.selectedStore}
                 reviews={this.state.reviewsByStore}
+                coffeeTypes={this.state.allCoffeeList}
               />
               <Footer />
             </Route>

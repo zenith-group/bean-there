@@ -24,7 +24,6 @@ class UserInfo extends React.Component {
 
     // if email changed
     if (newEmail !== '') {
-      console.log(newEmail)
       promises.push(updateEmail(this.props.user, newEmail));
     }
 
@@ -52,7 +51,7 @@ class UserInfo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='user-info'>
         <h2>My Profile</h2>
         {this.props.user.photoURL ?
           <img src={this.props.user.photoURL} className="profilePic"/>:

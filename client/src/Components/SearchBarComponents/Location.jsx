@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 
 const Location = ({ location, changeLocation }) => {
-  console.log()
   const [autocomplete, setAutoComplete] = useState(null)
   const onLoad = (autoC) => setAutoComplete(autoC)
   const onPlaceChange =  () => {

@@ -2,7 +2,6 @@ import React from 'react';
 import StarRatings from 'react-star-ratings';
 
 const CoffeeReview = ({ coffee }) => {
-  console.log('COFFEE', coffee.type.value);
   return (
     <div className='row'>
       <div>{coffee.type.value}</div>
