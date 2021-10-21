@@ -1,5 +1,5 @@
-import React from 'react';
-import StoreTile from './StoreTile.jsx';
+import React from "react";
+import StoreTile from "./StoreTile.jsx";
 
 const StoreList = ({
   storeList,

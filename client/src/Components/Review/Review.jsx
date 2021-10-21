@@ -20,10 +20,12 @@ class Review extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     var body = {
-      typeOfCoffee: e.target[0].value,
-      nameOfDrink: e.target[1].value,
+      user_id:this.props.userId,
+      coffee_type: e.target[0].value,
+      coffee_name: e.target[1].value,
+      store_id:this.props.storeId,
       rating: this.state.rating,
-      review: e.target[2].value
+      review_body: e.target[2].value,
     };
     this.setState({submitted:true})
     axios.post("/reviews", body).then((respond) => {
@@ -39,7 +41,7 @@ class Review extends React.Component {
     this.setState({submitted:false})
   }
   show() {
-    this.setState({ show: true });
+      this.setState({ show: true });
   }
   render() {
     return (
@@ -65,7 +67,8 @@ class Review extends React.Component {
                 <select name="coffee" id="coffeeType">
                         <option>None</option>
                     {this.props.allCoffeeType.map((type, index)=>
-                        <option value={index+1}>{type}</option>
+                        <option value={index+1}>{type.name}</option>
+
                       )}
                     </select>
               </div>

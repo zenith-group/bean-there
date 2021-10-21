@@ -43,10 +43,10 @@ module.exports = {
       req.body.user_id,
       req.body.rating,
       req.body.coffee_type,
+      req.body.coffee_name,
       req.body.review_body,
       formattedTime,
       req.body.store_id,
-      //req.body.coffee_name,
     ];
     reviews
       .create(dataArray)

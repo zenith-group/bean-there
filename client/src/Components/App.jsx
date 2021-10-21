@@ -49,6 +49,12 @@ class App extends React.Component {
     this.getYelp = this.getYelp.bind(this);
   }
 
+  changeLocation(lat, lng){
+    this.setState({
+      currentLocation:{lat: lat, lng: lng}
+    })
+  }
+
   updateSearch(term, coffeeList, location) {
     this.setState(
       {
@@ -185,6 +191,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
                 getYelp={this.getYelp.bind(this)}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <Footer />
             </Route>
@@ -196,6 +203,7 @@ class App extends React.Component {
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <Login authChange={this.authChange.bind(this)} />
               <Footer />
@@ -209,6 +217,7 @@ class App extends React.Component {
                 updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation.bind(this)}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <SignUp authChange={this.authChange.bind(this)} />
               <Footer />
@@ -222,8 +231,9 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
-              <div id='search-result'>
+              <div id="search-result">
                 <StoreList
                   select={this.selectStore}
                   storeList={Object.values(this.state.storeListObj)}
@@ -232,10 +242,10 @@ class App extends React.Component {
                   allCoffeeType={this.state.allCoffeeList}
                   loggedin={this.state.loggedin}
                 />
-                {/* <Map
+                <Map
                   currentLocation={this.state.currentLocation}
                   store={Object.values(this.state.storeListObj)}
-                /> */}
+                />
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
@@ -252,6 +262,7 @@ class App extends React.Component {
                 updateSearch={this.updateSearch}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
+                changeLocation={this.changeLocation.bind(this)}
               />
               <Profile
                 reviews={this.state.userReviews}
