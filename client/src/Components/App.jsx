@@ -252,7 +252,11 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
               />
-              <Profile reviews={this.state.userReviews} />
+              <Profile
+                reviews={this.state.userReviews}
+                user={this.state.user}
+                authChange={this.authChange.bind(this)}
+              />
               <Footer />
             </Route>
           </Switch>

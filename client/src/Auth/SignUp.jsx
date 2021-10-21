@@ -100,7 +100,7 @@ class SignUp extends React.Component {
             <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
           </label><br></br>
           <input type="submit" value="Sign Up" onClick={this.handleSubmit}/>
-          {this.state.error ? <span>{this.state.error}</span> : null}
+          {this.state.error ? <div>{this.state.error}</div> : null}
         </form>
         <button onClick={this.handleGoogle}>Sign up with Google</button>
       </div>

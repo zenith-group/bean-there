@@ -86,7 +86,7 @@ class Login extends React.Component {
             <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
           </label><br></br>
           <input type="submit" value="Login" onClick={this.handleSubmit}/>
-          {this.state.error ? <span>{this.state.error}</span> : null}
+          {this.state.error ? <div>{this.state.error}</div> : null}
         </form>
         <button onClick={this.handleGoogle}>Sign in with Google</button>
       </div>
