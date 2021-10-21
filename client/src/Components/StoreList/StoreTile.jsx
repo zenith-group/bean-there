@@ -56,8 +56,10 @@ const StoreTile = ({
     });
     return coffeeReviews;
   };
-
-  let address = store.location.display_address.join(', ');
+  let address = null;
+  if (store.location) {
+    address = store.location.display_address.join(', ');
+  }
   let phoneNumber = null;
   if (store.display_phone) {
     phoneNumber = <div>Phone Number: {store.display_phone}</div>;
