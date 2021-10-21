@@ -41,12 +41,7 @@ class Review extends React.Component {
     this.setState({submitted:false})
   }
   show() {
-    if(this.state.show === true){
-      this.setState({ show: false })
-      console.loh('show')
-    } else {
       this.setState({ show: true });
-    }
   }
   render() {
     return (
@@ -72,7 +67,8 @@ class Review extends React.Component {
                 <select name="coffee" id="coffeeType">
                         <option>None</option>
                     {this.props.allCoffeeType.map((type, index)=>
-                        <option value={index+1}>{type}</option>
+                        <option value={index+1}>{type.name}</option>
+
                       )}
                     </select>
               </div>
