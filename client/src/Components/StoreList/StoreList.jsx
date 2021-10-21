@@ -1,7 +1,16 @@
 import React from 'react';
 import StoreTile from './StoreTile.jsx';
 
-const StoreList = ({ storeList, select, selectedCoffees,currentUserId,allCoffeeType,loggedin }) => {
+const StoreList = ({
+  storeList,
+  select,
+  selectedCoffees,
+  currentUserId,
+  allCoffeeType,
+  loggedin,
+  storeRatings,
+  coffeeRatings,
+}) => {
   return (
     <li id='store-list' className='column'>
       {storeList?.map((store, i) => {
@@ -11,9 +20,11 @@ const StoreList = ({ storeList, select, selectedCoffees,currentUserId,allCoffeeT
             store={store}
             select={select}
             selectedCoffees={selectedCoffees}
-            currentUserId = {currentUserId}
-            allCoffeeType = {allCoffeeType}
-            loggedin ={loggedin}
+            currentUserId={currentUserId}
+            allCoffeeType={allCoffeeType}
+            loggedin={loggedin}
+            storeRatings={storeRatings}
+            coffeeRatings={coffeeRatings}
           />
         );
       })}
