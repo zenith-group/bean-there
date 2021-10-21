@@ -154,8 +154,9 @@ class App extends React.Component {
   }
 
   getYelp() {
+    let location = this.state.currentLocation
     axios
-      .get('/coffee')
+      .get(`/coffee/${location.lat}/${location.lng}`)
       .then((res) => {
         let result = [];
         for (let key in res.data) {
@@ -166,7 +167,7 @@ class App extends React.Component {
         });
       })
       .catch((err) => {
-        console.err(err);
+        console.log(err);
       });
   }
 
@@ -194,7 +195,7 @@ class App extends React.Component {
                 onClick={this.onSignoutClick}
               />
               <HomePage
-                updateSearch={this.updateSearch}
+                updateSearch={this.updateSearch.bind(this)}
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
                 getYelp={this.getYelp.bind(this)}
