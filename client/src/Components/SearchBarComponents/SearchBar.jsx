@@ -1,15 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Input from "./Input.jsx";
-import Categories from "./Categories.jsx";
-import Location from "./Location.jsx";
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  Link,
+} from 'react-router-dom';
+import Input from './Input.jsx';
+import Categories from './Categories.jsx';
+import Location from './Location.jsx';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: "",
-      location: "",
+      input: '',
+      location: '',
       categories: [],
     };
     this.categoriesChange = this.categoriesChange.bind(this);
@@ -25,6 +31,7 @@ class SearchBar extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+
     this.props.updateSearch(
       this.state.input,
       this.state.categories,
@@ -33,11 +40,14 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    let redirect = null;
+    if (this.props.submitted) {
+      redirect = <Redirect to='/search' />;
+    }
     return (
       <form
-        className="search-bar"
-        className="row center"
+        className='search-bar'
+        className='row center'
         onSubmit={this.handleSubmit}
       >
         <Input input={this.state.input} handleChange={this.handleChange} />
@@ -50,9 +60,8 @@ class SearchBar extends React.Component {
           changeLocation={this.props.changeLocation}
         />
         <i onClick={this.props.updateLocation}>⌖</i>
-        <Link to="/search">
-          <button onClick={this.props.getYelp}>Search</button>
-        </Link>
+        <button onClick={this.handleSubmit}>Search</button>
+        {redirect}
       </form>
     );
   }
