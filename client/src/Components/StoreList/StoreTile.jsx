@@ -84,7 +84,7 @@ const StoreTile = ({
           <div>{address}</div>
           {phoneNumber}
           <StarRatings
-            rating={0}
+            rating={storeRating}
             starRatedColor='#bc005c'
             starDimension='25px'
             starSpacing='1px'
