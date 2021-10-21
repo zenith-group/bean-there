@@ -23,7 +23,7 @@ app.get('/reviews/stores/:storeId', (req, res) => {
   reviews.getByStore(req, res);
 });
 app.get('/coffee/:lat/:lng', (req, res) => {
-  coffee.get(req, res, req.params);
+  coffee.get(req, res);
 });
 app.post('/reviews', (req, res) => {
   reviews.post(req, res);

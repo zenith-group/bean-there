@@ -154,9 +154,15 @@ class App extends React.Component {
   }
 
   getYelp() {
-    let location = this.state.currentLocation
+    let location = this.state.currentLocation;
+    console.log(location);
+    let searchTerm = 'coffee';
+    if (this.state.searchTerm.length > 0) {
+      searchTerm = this.state.searchTerm;
+    }
+    console.log(searchTerm);
     axios
-      .get(`/coffee/${location.lat}/${location.lng}`)
+      .get(`/coffee/${location.lat}/${location.lng}?term=${searchTerm}`)
       .then((res) => {
         let result = [];
         for (let key in res.data) {
@@ -254,10 +260,10 @@ class App extends React.Component {
                   allCoffeeType={this.state.allCoffeeList}
                   loggedin={this.state.loggedin}
                 />
-                <Map
+                {/* <Map
                   currentLocation={this.state.currentLocation}
                   store={Object.values(this.state.storeListObj)}
-                />
+                /> */}
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
