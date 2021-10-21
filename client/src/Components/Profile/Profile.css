@@ -1,0 +1,25 @@
+#user-review-container {
+  width: 75vh;
+  margin: 10px auto;
+}
+
+.review-container {
+  width: 90%;
+  padding: 0 5px;
+  border: 2px solid #1E1E24;
+  margin: 5px auto;
+}
+
+.review-container h3,
+.review-container h4,
+.review-container h5 {
+  margin: 0;
+}
+
+.review-body {
+  text-align: center;
+}
+.date {
+  font-size: 12px;
+  text-align: right;
+}
