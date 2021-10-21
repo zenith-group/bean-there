@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { updateProfile, updatePassword, updateEmail } from "firebase/auth";
+import { updateProfile, updateEmail, sendPasswordResetEmail } from "firebase/auth";
 import UpdateForm from './UpdateForm.jsx';
 import './UserInfo.css';
 
@@ -9,9 +9,10 @@ class UserInfo extends React.Component {
     super(props);
     this.state = {};
     this.makeProfileChange = this.makeProfileChange.bind(this);
+    this.sendPasswordReset = this.sendPasswordReset.bind(this);
   }
 
-  makeProfileChange(newName, newEmail, newPassword, newPhoto) {
+  makeProfileChange(newName, newEmail, newPhoto) {
     var promises = [];
 
     // if name changed
@@ -26,11 +27,6 @@ class UserInfo extends React.Component {
     if (newEmail !== '') {
       console.log(newEmail)
       promises.push(updateEmail(this.props.user, newEmail));
-    }
-
-    // if password changed
-    if (newPassword !== '') {
-      promises.push(updatePassword(this.props.user, newPassword));
     }
 
     // if photo changed
@@ -50,6 +46,16 @@ class UserInfo extends React.Component {
      });
   }
 
+  sendPasswordReset() {
+    sendPasswordResetEmail(this.props.user, this.props.user.email)
+      .then(() => {
+        alert(`A password reset email has been sent to ${this.props.user.email}`);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   render() {
     return (
       <div>
@@ -61,6 +67,7 @@ class UserInfo extends React.Component {
         <div><b>Username:</b> {this.props.user.displayName}</div>
         <div><b>Email:</b> {this.props.user.email}</div>
         <UpdateForm makeProfileChange={this.makeProfileChange} user={this.props.user}/>
+        <u onClick={this.sendPasswordReset}>Send Password Reset Email</u>
       </div>
     );
   }

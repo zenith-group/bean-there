@@ -4,6 +4,7 @@ import React from 'react';
 import app from './firebase_setup.jsx';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
+import './SignUp.css';
 
 
 class SignUp extends React.Component {
@@ -100,9 +101,11 @@ class SignUp extends React.Component {
             <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}/>
           </label><br></br>
           <input type="submit" value="Sign Up" onClick={this.handleSubmit}/>
+          <button type="button" className="login-with-google-btn" onClick={this.handleGoogle}>
+            Sign in with Google
+          </button>
           {this.state.error ? <div>{this.state.error}</div> : null}
         </form>
-        <button onClick={this.handleGoogle}>Sign up with Google</button>
       </div>
     );
   }
