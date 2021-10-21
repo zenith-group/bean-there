@@ -47,6 +47,11 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-image: url('https://ymi.today/wp-content/uploads/2021/10/Squid-Game-Featured-Image-2-1024x423.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* box-shadow: inset 0 0 0 1000px rgba(255,255,255,.4); */
+
 }
 
 .dark-text {
