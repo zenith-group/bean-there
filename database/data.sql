@@ -10,7 +10,7 @@ FROM 'PATH/TO/FILE/bean-there/database/coffee_type_data.csv' -- REPLACE THIS
 DELIMITER ',';
 
 
-COPY reviews (user_id, rating, coffee_type, drink_name, review_body, date, store_id)
+COPY reviews (user_id, rating, coffee_type, drink_name, review_body, date, store_id, store_name, store_img_url, store_url)
 FROM 'PATH/TO/FILE/bean-there/database/reviews.csv' -- REPLACE THIS
 DELIMITER ',' CSV HEADER;
 

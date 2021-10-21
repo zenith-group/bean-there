@@ -25,7 +25,9 @@ CREATE TABLE reviews (
   review_body TEXT NULL DEFAULT NULL,
   date TIMESTAMP,
   store_id VARCHAR NULL DEFAULT NULL,
-  store_img_url VARCHAR NULL DEFAULT NULL,
+  store_name TEXT NULL DEFAULT NULL,
+  store_img_url TEXT NULL DEFAULT NULL,
+  store_url TEXT NULL DEFAULT NULL,
   helpful INT DEFAULT 0,
   report BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (review_id)
