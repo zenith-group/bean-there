@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { updateProfile, updateEmail, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth, updateProfile, updateEmail, sendPasswordResetEmail } from "firebase/auth";
 import UpdateForm from './UpdateForm.jsx';
 import './UserInfo.css';
 
@@ -47,7 +47,8 @@ class UserInfo extends React.Component {
   }
 
   sendPasswordReset() {
-    sendPasswordResetEmail(this.props.user, this.props.user.email)
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, this.props.user.email)
       .then(() => {
         alert(`A password reset email has been sent to ${this.props.user.email}`);
       })
@@ -67,7 +68,7 @@ class UserInfo extends React.Component {
         <div><b>Username:</b> {this.props.user.displayName}</div>
         <div><b>Email:</b> {this.props.user.email}</div>
         <UpdateForm makeProfileChange={this.makeProfileChange} user={this.props.user}/>
-        <u onClick={this.sendPasswordReset}>Send Password Reset Email</u>
+        <u onClick={this.sendPasswordReset}>Reset Password</u>
       </div>
     );
   }
