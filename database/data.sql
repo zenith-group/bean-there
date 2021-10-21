@@ -1,10 +1,9 @@
 -- INSTRUCTIONS:
-    -- run this file AFTER running the schema.sql file. This will load data into tables
-    -- COPY requires an absolute path, so replace the absolute paths below with yours
-    -- run command: psql postgres (if not already in postgres terminal)
-    -- run command: \c coffee (if not already in coffee DB)
-    -- run command: \i data.sql
-
+-- run this file AFTER running the schema.sql file. This will load data into tables
+-- COPY requires an absolute path, so replace the absolute paths below with yours
+-- run command: psql postgres (if not already in postgres terminal)
+-- run command: \c coffee (if not already in coffee DB)
+-- run command: \i data.sql
 COPY coffee_type (name, temperature)
 FROM '/PATH/TO/FILE/coffee_type_data.csv' -- REPLACE THIS
 DELIMITER ',';

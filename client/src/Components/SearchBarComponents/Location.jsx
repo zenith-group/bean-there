@@ -1,14 +1,24 @@
-import React from 'react';
+import React,{useState} from 'react';
+import { Autocomplete } from '@react-google-maps/api';
 
-const Location = ({ location, handleChange }) => {
+const Location = ({ location, changeLocation }) => {
+  console.log()
+  const [autocomplete, setAutoComplete] = useState(null)
+  const onLoad = (autoC) => setAutoComplete(autoC)
+  const onPlaceChange =  () => {
+    const lat = autocomplete.getPlace().geometry.location.lat()
+    const lng = autocomplete.getPlace().geometry.location.lng()
+    changeLocation(lat, lng)
+  }
+
   return (
-    <input
-      name='location'
-      type='text'
-      value={location}
-      onChange={handleChange}
-      placeholder='Location'
-    />
+    <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChange}>
+      <input
+        name='location'
+        type='text'
+        placeholder='Location'
+      />
+    </Autocomplete >
   );
 };
 
