@@ -39,6 +39,12 @@ class SearchBar extends React.Component {
     );
   }
 
+  changeLocation(lat, lng){
+    this.setState({
+      location: {lat: lat, lng: lng}
+    })
+  }
+
   render() {
     let redirect = null;
     if (this.props.submitted) {
@@ -56,7 +62,7 @@ class SearchBar extends React.Component {
         />
         <Location
           location={this.state.location}
-          changeLocation={this.props.changeLocation}
+          changeLocation={this.changeLocation.bind(this)}
         />
         <i onClick={this.props.updateLocation}>⌖</i>
         <button onClick={this.handleSubmit}>Search</button>
