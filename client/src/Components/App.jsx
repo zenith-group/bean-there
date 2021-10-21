@@ -39,6 +39,7 @@ class App extends React.Component {
       storeList: [],
       storeListObj: {},
       currentUserId: '',
+      searchBarSubmitted: false,
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -49,23 +50,29 @@ class App extends React.Component {
     this.getYelp = this.getYelp.bind(this);
   }
 
-  changeLocation(lat, lng){
+  changeLocation(lat, lng) {
     this.setState({
-      currentLocation:{lat: lat, lng: lng}
-    })
+      currentLocation: { lat: lat, lng: lng },
+    });
   }
 
   updateSearch(term, coffeeList, location) {
-    this.setState(
-      {
+    Promise.resolve(
+      this.setState({
         searchTerm: term,
         searchCoffeeList: coffeeList,
         inputLocation: location,
-      },
-      () => {
+      })
+    )
+      .then(() => {
         this.getYelp();
-      }
-    );
+      })
+      .then(() => {
+        this.setState({ searchBarSubmitted: true });
+      })
+      .then(() => {
+        this.setState({ searchBarSubmitted: false });
+      });
   }
 
   getCurrentLocation() {
@@ -192,6 +199,7 @@ class App extends React.Component {
                 coffeeList={this.state.allCoffeeList}
                 getYelp={this.getYelp.bind(this)}
                 changeLocation={this.changeLocation.bind(this)}
+                submitted={this.state.searchBarSubmitted}
               />
               <Footer />
             </Route>
@@ -204,6 +212,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation.bind(this)}
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
+                submitted={this.state.searchBarSubmitted}
               />
               <Login authChange={this.authChange.bind(this)} />
               <Footer />
@@ -218,6 +227,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation.bind(this)}
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
+                submitted={this.state.searchBarSubmitted}
               />
               <SignUp authChange={this.authChange.bind(this)} />
               <Footer />
@@ -232,8 +242,9 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
+                submitted={this.state.searchBarSubmitted}
               />
-              <div id="search-result">
+              <div id='search-result'>
                 <StoreList
                   select={this.selectStore}
                   storeList={Object.values(this.state.storeListObj)}
@@ -263,6 +274,7 @@ class App extends React.Component {
                 updateLocation={this.getCurrentLocation}
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
+                submitted={this.state.searchBarSubmitted}
               />
               <Profile
                 reviews={this.state.userReviews}
