@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBarComponents/SearchBar.jsx';
 import './Header.css';
 
-const Header = ({ loggedin, user, onClick, updateSearch, updateLocation, coffeeList, changeLocation }) => (
+const Header = ({ loggedin, user, onClick, updateSearch, updateLocation, coffeeList, changeLocation, submitted }) => (
   <div id='header' className='header'>
     <Link to='/'><img className='logo' src={'./img/Bean_There.png'} alt='logo' /></Link>
-    <SearchBar updateSearch={updateSearch} updateLocation={updateLocation} coffeeList={coffeeList} changeLocation={changeLocation}/>
+    <SearchBar updateSearch={updateSearch} updateLocation={updateLocation} coffeeList={coffeeList} changeLocation={changeLocation} submitted={submitted} />
     <div className='nav-bar'>
       {loggedin ? <Link to='/profile'><button>Accounts</button></Link> : <Link to='/login'><button>Login</button></Link>}
       {loggedin ? <Link to='/'><button onClick={() => {onClick()}}>Sign Out</button></Link> : <Link to='/signup'><button>Sign Up</button></Link>}

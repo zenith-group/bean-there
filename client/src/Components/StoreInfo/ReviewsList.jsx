@@ -1,13 +1,13 @@
 import React from 'react';
 import Review from './Review.jsx';
 
-const ReviewsList = ({ reviews }) => {
+const ReviewsList = ({ reviews, coffeeTypes }) => {
   return (
-    <li className='row review-list'>
-      {reviews.map((review) => {
-        return <Review review={review} />;
+    <div className='reviews'>
+      {reviews.map((review, index) => {
+        return <Review review={review} key={index} coffeeTypes={coffeeTypes}/>;
       })}
-    </li>
+    </div>
   );
 };
 

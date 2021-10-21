@@ -1,37 +1,34 @@
 import React from 'react';
 import ReviewsList from './ReviewsList.jsx';
+import './StoreInfo.css';
 
-const StoreInfo = ({ store, reviews }) => {
+const StoreInfo = ({ store, reviews, coffeeTypes }) => {
   if (store === null) {
     return null;
   }
   let status = store.is_closed ? 'Closed' : 'Open';
-  let phoneNumber = null;
-  if (store.display_phone) {
-    phoneNumber = <li>Phone Number: {store.display_phone}</li>;
-  }
+  let phoneNumber = store.display_phone || null;
+  // if (store.display_phone) {
+  //   phoneNumber = store.display_phone;
+  // }
   let address = store.location.display_address.join(', ');
   return (
-    <div className='dark-text'>
-      <div className='column'>
-        Store info
-        <div className='row'>
-          <img
-            className='storeImage'
-            src={store.image_url}
-            alt={store.image_url}
-          />
-          <ul>
-            <li>Store Name: {store.name}</li>
-            <li>Address: {address}</li>
-            <li>Open Status: {status}</li>
-            {phoneNumber}
-          </ul>
+    <div className='store-information'>
+      <div className='store-details'>
+        <img
+          className='storeImage'
+          src={store.image_url}
+          alt={store.image_url}
+        />
+        <div className='store-reviews-container'>
+          <h3>{store.name}</h3>
+          <h3>{address}</h3>
+          <h3>Status: {status}</h3>
+          <h3>Phone Number: {phoneNumber}</h3>
         </div>
-        <div>Reviews</div>
-        <div>
-          <ReviewsList reviews={reviews} />
-        </div>
+      </div>
+      <div className='store-reviews'>
+        <ReviewsList reviews={reviews} coffeeTypes={coffeeTypes}/>
       </div>
     </div>
   );

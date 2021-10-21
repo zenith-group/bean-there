@@ -80,6 +80,20 @@
   padding:10px;
   border-radius:5px;
 }
+#invited{
+  cursor:pointer;
+  border:none;
+  background:#991D57;
+  background-image:linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+  background-image:-moz-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+  background-image:-webkit-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+  color:#FFF;
+  margin:0 0 5px;
+  padding:10px;
+  border-radius:5px;
+}
+
+
 #submitButton{
   cursor:pointer;
   width:100%;
