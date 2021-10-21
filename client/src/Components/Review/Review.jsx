@@ -60,7 +60,9 @@ class Review extends React.Component {
               <h1>Nice to Hear From You!</h1>
             </div>
             <div>
-              {this.state.submitted? <div><h1>Thank You For Your Feedback!</h1><button  onClick={this.hide}>Close</button></div>:
+              {this.state.submitted? <div><h1>Thank You For Your Feedback!</h1><img src="https://external-preview.redd.it/-I5viM2EB2SL7giYqHSwBYcXcelqUgBzukVoKVoBZYQ.jpg?auto=webp&s=6091824995fea259525cb9eed9ce3061f7e7baed" width="380" height="220" /><br/>
+              <h1>You're now invited</h1>
+              <button  onClick={this.hide} id="invited">Close</button></div>:
             <form onSubmit={this.handleSubmit}>
               <div>
                 <span className="required">Coffee Type: </span>
