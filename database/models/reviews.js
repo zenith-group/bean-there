@@ -24,6 +24,7 @@ const readByUser = (dataArray) => {
   WHERE
   user_id = $1
   AND report = false
+  ORDER BY date DESC
   LIMIT $2
   `;
   return pool
@@ -43,6 +44,7 @@ const readByStore = (id) => {
   WHERE
   store_id = $1
   AND report = false
+  ORDER BY date DESC
   `;
   return pool
     .query(queryString, [id])
