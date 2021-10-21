@@ -6,6 +6,10 @@
   margin: 1%;
 }
 
+u:hover {
+  cursor: pointer;
+}
+
 #user-info {
   margin: 0 5%;
 }

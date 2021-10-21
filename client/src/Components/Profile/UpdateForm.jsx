@@ -8,7 +8,6 @@ class UpdateForm extends React.Component {
     this.state = {
       show: false,
       newName: '',
-      newPassword: '',
       newPhoto: '',
       newEmail: ''
     };
@@ -23,10 +22,9 @@ class UpdateForm extends React.Component {
     this.setState({
       show: false
     }, () => {
-      this.props.makeProfileChange(this.state.newName, this.state.newEmail, this.state.newPassword, this.state.newPhoto);
+      this.props.makeProfileChange(this.state.newName, this.state.newEmail, this.state.newPhoto);
       this.setState({
         newName: '',
-        newPassword: '',
         newPhoto: '',
         newEmail: ''
       })
@@ -70,10 +68,6 @@ class UpdateForm extends React.Component {
               <div>
                 <span className="required">New Email (optional)</span>
                 <input onChange={this.handleInputChange} type="text" name="newEmail" value={this.state.newEmail} placeholder={this.props.user.email}/>
-              </div>
-              <div>
-                <span className="required">New Password (optional)</span>
-                <input onChange={this.handleInputChange} type="password" name="newPassword" value={this.state.newPassword} placeholder={"*******"}/>
               </div>
               <div>
                 <span className="required">New Photo URL (optional)</span>
