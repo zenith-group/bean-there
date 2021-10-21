@@ -52,7 +52,7 @@ class UserInfo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='user-info'>
         <h2>My Profile</h2>
         {this.props.user.photoURL ?
           <img src={this.props.user.photoURL} className="profilePic"/>:
