@@ -30,13 +30,13 @@ class App extends React.Component {
       searchCoffeeList: [],
       allCoffeeList: [],
       inputLocation: null,
-      currentLocation: { lat: 40.650002, lng: -73.949997 },
+      currentLocation: { lat: 40.702501851176706, lng: -73.94245147705078 },
       loggedin: false,
       userReviews: [],
       user: {},
       selectedStore: null,
       reviewsByStore: [],
-      storeList: [],
+      storeListObj: {}
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -140,9 +140,12 @@ class App extends React.Component {
     axios
       .get("/coffee")
       .then((res) => {
-        console.log(res.data)
+        let result = [];
+        for (let key in res.data) {
+          result.push(res.data[key]);
+        }
         this.setState({
-          storeList: res.data,
+          storeListObj: res.data
         });
       })
       .catch((err) => {
@@ -151,7 +154,11 @@ class App extends React.Component {
   }
 
   selectStore(store) {
-    this.getReviewsByStore(store);
+    // this.getReviewsByStore(store);
+    this.setState({
+      selectedStore: this.state.storeListObj[store.id],
+      reviewsByStore: this.state.storeListObj[store.id].reviews
+    })
   }
 
   componentDidMount() {
@@ -215,12 +222,12 @@ class App extends React.Component {
               <div id="search-result">
                 <StoreList
                   select={this.selectStore}
-                  storeList={this.state.storeList}
+                  storeList={Object.values(this.state.storeListObj)}
                   selectedCoffees={this.state.searchCoffeeList}
                 />
                 <Map
                   currentLocation={this.state.currentLocation}
-                  store={this.state.storeList}
+                  store={Object.values(this.state.storeListObj)}
                 />
               </div>
               <StoreInfo

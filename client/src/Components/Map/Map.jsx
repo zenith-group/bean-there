@@ -18,7 +18,7 @@ const Map = (props) => {
         bootstrapURLKeys={{ key: KEYS.google }}
         center={props.currentLocation}
         defaultCenter={{ lat: 0, lng: 0 }}
-        defaultZoom={11}
+        defaultZoom={15}
       >
         {props.store?.map((store, x) => (
           <div
