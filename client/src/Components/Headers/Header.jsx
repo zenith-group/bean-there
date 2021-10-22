@@ -8,7 +8,7 @@ const Header = ({ loggedin, user, onClick, updateSearch, updateLocation, coffeeL
     <Link to='/'><img className='logo' src={'./img/Bean_There.png'} alt='logo' /></Link>
     <SearchBar updateSearch={updateSearch} updateLocation={updateLocation} coffeeList={coffeeList} changeLocation={changeLocation} submitted={submitted} />
     <div className='nav-bar'>
-      {loggedin ? <Link to='/profile'><button>Accounts</button></Link> : <Link to='/login'><a className='logginButton'>
+      {loggedin ? <Link to='/profile'><button>My Profile</button></Link> : <Link to='/login'><a className='logginButton'>
         <span></span>
         <span></span>
         <span></span>
@@ -29,7 +29,7 @@ const Header = ({ loggedin, user, onClick, updateSearch, updateLocation, coffeeL
         Sign Up
     </a></Link>}
       {loggedin ? <h3>Welcome, {user.displayName}</h3> : <h3>Welcome, guest</h3>}
-      {user.photoURL ? <img src={user.photoURL} className="profilePic"/> : <i className="fa fa-user-circle fa-3x"></i>
+      {user.photoURL ? <div className="headerProfilePic"><img src={user.photoURL} className="headerProPic"/></div> : <i className="fa fa-user-circle fa-3x"></i>
       }
     </div>
   </div>

@@ -17,34 +17,36 @@ button {
 
 .nav-bar button {
   height: 25px;
-  width: 75px;
+  width: 80px;
   margin: 0 5px;
 }
 
 .header {
+  height: 15vh;
   background-color: #1E1E24;
   color: #EEF4ED;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
 }
 
 .logo {
-  width: 100px;
+  width: 13vh;
   height: auto;
-  margin: 10px;
+  margin: 0 4vh;
 }
 
 .nav-bar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 4vh;
   justify-content: flex-end;
 }
 
 #home-page {
-  height: 75vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,10 +76,6 @@ button {
 .column {
   display: flex;
   flex-direction: column;
-}
-
-#search-bar {
-  margin: auto;
 }
 
 .center {

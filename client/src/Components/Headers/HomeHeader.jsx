@@ -11,7 +11,7 @@ const HomeHeader = ({ loggedin, user, onClick }) => (
         <span></span>
         <span></span>
         <span></span>
-        Accounts
+        My Profile
     </a></Link> : <Link to='/login'><a className='logginButton'>
         <span></span>
         <span></span>
@@ -33,7 +33,7 @@ const HomeHeader = ({ loggedin, user, onClick }) => (
         Sign Up
     </a></Link>}
       {loggedin ? <h3>Welcome, {user.displayName} </h3> : <h3>Welcome, guest</h3>}
-      {user.photoURL ? <img src={user.photoURL} className="profilePic"/> : <i className="fa fa-user-circle fa-3x"></i>}
+      {user.photoURL ? <div className="headerProfilePic"><img src={user.photoURL} className="headerProPic"/></div> : <i className="fa fa-user-circle fa-3x"></i>}
     </div>
   </div>
 )

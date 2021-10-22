@@ -30,7 +30,7 @@ class Footer extends React.Component {
             <div>
               <a href='https://www.google.com/maps/place/Squid+St,+Portsmouth,+NH+03801/@43.021721,-70.79349,17z/data=!3m1!4b1!4m5!3m4!1s0x89e2c1cae2b65501:0xee600e9cbfdee808!8m2!3d43.021721!4d-70.791296' target="_blank"><i className="fa fa-map-marker"></i></a>
               <p>
-                <span>456 squid St</span> Portsmouth, NH
+                <span>456 Squid St</span> Portsmouth, NH
               </p>
             </div>
 

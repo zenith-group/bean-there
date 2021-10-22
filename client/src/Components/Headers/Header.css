@@ -1,5 +1,5 @@
-.profilePic, i {
-  margin: 0px 5px;
+.headerProfilePic, i {
+  margin: 0px 10px;
 }
 
 .logginButton{
@@ -102,4 +102,28 @@
   50%,100%{
       bottom: 100%;
   }
+}
+.headerProPic {
+  height: 100px;
+  /* width: 100px; */
+  /* z-index: -10; */
+}
+
+.headerProfilePic {
+  align-self: center;
+  /* margin: 1%; */
+  border-radius: 50%;
+  width: 90px;
+  max-width: 90px;
+  height: 90px;
+  max-height: 90px;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  align-items: stretch;
+  justify-content: space-evenly;
+}
+
+h3 {
+  flex-shrink: 0;
 }
