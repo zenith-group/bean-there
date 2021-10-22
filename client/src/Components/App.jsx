@@ -48,6 +48,7 @@ class App extends React.Component {
     this.selectStore = this.selectStore.bind(this);
     this.getReviewsByStore = this.getReviewsByStore.bind(this);
     this.getYelp = this.getYelp.bind(this);
+    this.fetchUserReviews = this.fetchUserReviews.bind(this);
   }
 
   changeLocation(lat, lng, mapMoved) {
@@ -266,6 +267,7 @@ class App extends React.Component {
                   currentUserId={this.state.currentUserId}
                   allCoffeeType={this.state.allCoffeeList}
                   loggedin={this.state.loggedin}
+                  fetchUserReviews={this.fetchUserReviews}
                 />
                 <Map
                   currentLocation={this.state.currentLocation}

@@ -12,6 +12,7 @@ const StoreTile = ({
   loggedin,
   storeRatings,
   coffeeRatings,
+  fetchUserReviews
 }) => {
   const handleClick = () => {
     select(store);
@@ -97,6 +98,7 @@ const StoreTile = ({
                 storeId={store.id}
                 userId={currentUserId}
                 allCoffeeType={allCoffeeType}
+                fetchUserReviews={fetchUserReviews}
               />
             </div>
           )}
