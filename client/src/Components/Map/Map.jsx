@@ -5,8 +5,6 @@ import LocationMarker from './locationMarker'
 
 import useStyles from "./styles.js";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 const Map = (props) => {
   const classes = useStyles();
 
@@ -17,7 +15,8 @@ const Map = (props) => {
         bootstrapURLKeys={{ key: KEYS.google }}
         center={props.currentLocation}
         defaultCenter={{ lat: 0, lng: 0 }}
-        defaultZoom={12}
+        defaultZoom={14}
+        onChange={e => props.changeLocation(e.center.lat, e.center.lng, true)}
       >
         {props.store?.map((store, x) => (
           <div
