@@ -64,8 +64,15 @@ class SearchBar extends React.Component {
         <Location
           location={this.state.location}
           changeLocation={this.changeLocation.bind(this)}
+          geolocated={this.props.geolocated}
         />
-        <i onClick={this.props.updateLocation}>⌖</i>
+        <i onClick={e => {
+          this.props.updateLocation((result) => {
+            this.setState({
+              location: result
+            })
+          })
+        }}>⌖</i>
         <button onClick={this.handleSubmit}>Search</button>
         {redirect}
       </form>

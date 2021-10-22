@@ -13,7 +13,7 @@ import Header from './Headers/Header.jsx';
 import HomePage from './HomePage/HomePage.jsx';
 import SearchBar from './SearchBarComponents/SearchBar.jsx';
 import Map from './Map/Map.jsx';
-
+import KEYS from "/config.js";
 import Profile from './Profile/Profile.jsx';
 import SignUp from '../Auth/SignUp.jsx';
 import Login from '../Auth/Login.jsx';
@@ -40,6 +40,7 @@ class App extends React.Component {
       storeListObj: {},
       currentUserId: '',
       searchBarSubmitted: false,
+      geolocated: ''
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -83,12 +84,18 @@ class App extends React.Component {
       });
   }
 
-  getCurrentLocation() {
+  getCurrentLocation(callBack) {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
+        callBack({lat: latitude, lng: longitude})
         this.setState({
           currentLocation: { lat: latitude, lng: longitude },
         });
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${KEYS.google}`)
+        .then(res => this.setState({
+          geolocated: res.data.results[0].formatted_address
+        }))
+        .catch(err => console.log(err))
       }
     );
   }
@@ -215,6 +222,7 @@ class App extends React.Component {
                 getYelp={this.getYelp.bind(this)}
                 changeLocation={this.changeLocation.bind(this)}
                 submitted={this.state.searchBarSubmitted}
+                geolocated={this.state.geolocated}
               />
               <Footer />
             </Route>
@@ -228,6 +236,7 @@ class App extends React.Component {
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
                 submitted={this.state.searchBarSubmitted}
+                geolocated={this.state.geolocated}
               />
               <Login authChange={this.authChange.bind(this)} />
               <Footer />
@@ -243,6 +252,7 @@ class App extends React.Component {
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
                 submitted={this.state.searchBarSubmitted}
+                geolocated={this.state.geolocated}
               />
               <SignUp authChange={this.authChange.bind(this)} />
               <Footer />
@@ -258,6 +268,7 @@ class App extends React.Component {
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
                 submitted={this.state.searchBarSubmitted}
+                geolocated={this.state.geolocated}
               />
               <div id='search-result'>
                 <StoreList
@@ -293,6 +304,7 @@ class App extends React.Component {
                 coffeeList={this.state.allCoffeeList}
                 changeLocation={this.changeLocation.bind(this)}
                 submitted={this.state.searchBarSubmitted}
+                geolocated={this.state.geolocated}
               />
               <Profile
                 reviews={this.state.userReviews}

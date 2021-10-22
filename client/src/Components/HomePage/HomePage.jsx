@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "../SearchBarComponents/SearchBar.jsx";
 
-const HomePage = ({ getYelp, updateSearch, updateLocation, coffeeList, changeLocation, submitted }) => (
+const HomePage = ({ geolocated ,getYelp, updateSearch, updateLocation, coffeeList, changeLocation, submitted }) => (
   <div id="home-page">
     <SearchBar
       updateSearch={updateSearch}
@@ -10,6 +10,7 @@ const HomePage = ({ getYelp, updateSearch, updateLocation, coffeeList, changeLoc
       getYelp={getYelp}
       changeLocation={changeLocation}
       submitted={submitted}
+      geolocated={geolocated}
     />
     {/* <div className='shape'><i class="far fa-circle"></i></div>
     <div className='shape'><i class="far fa-square"></i></div>
