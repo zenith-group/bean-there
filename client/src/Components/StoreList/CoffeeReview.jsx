@@ -3,7 +3,7 @@ import StarRatings from 'react-star-ratings';
 
 const CoffeeReview = ({ coffee }) => {
   return (
-    <div className='row'>
+    <div className='coffee-rating row space-between'>
       <div>{coffee.type.value}</div>
       <StarRatings
         rating={coffee.average}

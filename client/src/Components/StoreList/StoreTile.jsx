@@ -67,9 +67,9 @@ const StoreTile = ({
   }
   let status = null;
   if (store.is_closed) {
-    status = <div className='red'>Closed</div>;
+    status = <span className='red'>Closed</span>;
   } else {
-    status = <div className='green'>Open</div>;
+    status = <span className='green'>Open</span>;
   }
   let storeRating = calculateStoreRatings(store);
   let coffeeRatingsForStore = coffeeRatingsByType(store, selectedCoffees);
@@ -82,7 +82,7 @@ const StoreTile = ({
           src={store.image_url}
           alt={store.image_url}
         />
-        <div className='column'>
+        <div className='store-tile-list column center'>
           <div>{store.name}</div>
           <div>{address}</div>
           {phoneNumber}
@@ -104,8 +104,8 @@ const StoreTile = ({
           )}
         </div>
       </div>
-      <div>{status}</div>
-      <div>
+      <div className='margin-1-5'>Currently: {status}</div>
+      <div className='tile store-tile-coffee-ratings margin-1-5'>
         <div>
           {coffeeRatingsForStore.map((coffeeType, index) => {
             if (coffeeType) {

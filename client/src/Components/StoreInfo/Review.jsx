@@ -5,19 +5,35 @@ const Review = ({ review, coffeeTypes }) => {
   let coffeeType = coffeeTypes[review.coffee_type + 1] || null;
   let date = review.date.split('T')[0];
   return (
-    <div className='review-container'>
-      <h3 className='drink-name'>Drink Name: {review.drink_name}</h3>
-      <StarRatings
+    <div className='column coffee-review'>
+      <div className='row space-between'>
+        <div className='start'>
+          <span className='bold'>{review.drink_name}</span>
+          <span className='light'> | </span>
+          <span className='coffee-type italic'>
+            {coffeeType !== null ? coffeeType.name : 'N/A'}
+          </span>
+        </div>
+        <StarRatings
           rating={review.rating}
           starRatedColor='#bc005c'
           starDimension='20px'
           starSpacing='1px'
-      />
-      <h4 className='coffee-type'>Coffee Type: {coffeeType !== null ? coffeeType.name : 'N/a'}</h4>
-      <h3 className='review-body'>{review.review_body}</h3>
-      <h4 className='helpful'>Helpful: {review.helpful}</h4>
-      <h5 className='username'>Anon</h5>
-      <h6 className='date'>{date}</h6>
+        />
+      </div>
+      <div className='coffee-review-body'>{review.review_body}</div>
+      <div className='review-info row space-between'>
+        <div className='row end'>
+          <span className='helpful'>Helpful {review.helpful} </span>
+          <span className='light'> | </span>
+          <span> Report</span>
+        </div>
+        <div className='row end'>
+          <span className='italic'>Anon </span>
+          <span className='light'> | </span>
+          <span> {date}</span>
+        </div>
+      </div>
     </div>
   );
 };
