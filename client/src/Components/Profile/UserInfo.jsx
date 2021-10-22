@@ -61,11 +61,13 @@ class UserInfo extends React.Component {
       <div id='user-info'>
         <h2>My Profile</h2>
         {this.props.user.photoURL ?
-          <img src={this.props.user.photoURL} className="profilePic"/>:
+          <div className="profilePic"><img src={this.props.user.photoURL} id="proPic"/></div>:
           <i className="fa fa-user-circle fa-5x"></i>
         }
-        <div><b>Username:</b> {this.props.user.displayName}</div>
-        <div><b>Email:</b> {this.props.user.email}</div>
+        <div id="name-email">
+          <div>{this.props.user.displayName}</div>
+          <div>{this.props.user.email}</div>
+        </div>
         <UpdateForm makeProfileChange={this.makeProfileChange} user={this.props.user}/>
         <u onClick={this.sendPasswordReset}>Reset Password</u>
       </div>
