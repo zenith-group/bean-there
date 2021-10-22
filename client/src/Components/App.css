@@ -1,6 +1,6 @@
 body {
-  color: #1E1E24;
-  background-color: #EEF4ED;
+  color: #1e1e24;
+  background-color: #eef4ed;
 }
 
 .red {
@@ -22,9 +22,9 @@ button {
 }
 
 .header {
+  background-color: #1e1e24;
+  color: #eef4ed;
   height: 15vh;
-  background-color: #1E1E24;
-  color: #EEF4ED;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,7 +50,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width:100%;
+  width: 100%;
   background-image: url('https://ymi.today/wp-content/uploads/2021/10/Squid-Game-Featured-Image-2-1024x423.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -58,7 +58,7 @@ button {
 }
 
 .dark-text {
-  color: #1E1E24;
+  color: #1e1e24;
 }
 
 .SignUp,
@@ -68,16 +68,28 @@ button {
   margin: 0 auto;
 }
 
+.margin-1-5 {
+  margin: 1% 5%;
+}
+
 .row {
   display: flex;
   flex-direction: row;
 }
-
+.space-between {
+  justify-content: space-between;
+}
+.center {
+  justify-content: center;
+}
 .column {
   display: flex;
   flex-direction: column;
 }
 
+#search-bar {
+  margin: auto;
+}
 .center {
   justify-content: center;
 }
@@ -112,14 +124,35 @@ button {
   background-color: white;
   border-radius: 5px;
   margin: 5px;
+  height: 30%;
 }
 .store-tile-image {
   align-self: center;
   border-radius: 50%;
   margin: 1%;
+  margin-top: 2%;
+  margin-left: 5%;
   border-radius: 50%;
   width: 100px;
   max-width: 100px;
   height: 100px;
   max-height: 100px;
+}
+.store-tile-list {
+  margin-left: 5%;
+}
+
+.tile {
+  background-color: #eef4ed;
+}
+.store-tile-coffee-ratings {
+  padding: 1%;
+  border-radius: 5px;
+  height: 25%;
+  max-height: 25%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.coffee-rating {
+  margin: 1% 5%;
 }
