@@ -116,6 +116,7 @@
   color: #fff;
   display: inline-block;
   padding-right: 5px;
+  padding-left: 5px;
 }
 
 .footer-distributed .footer-links .link-1:before {

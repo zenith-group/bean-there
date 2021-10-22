@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 class Footer extends React.Component {
   constructor(props) {
@@ -12,13 +13,13 @@ class Footer extends React.Component {
           <div className="footer-left">
           <img src={'./img/Bean_There.png'} alt='logo' width='50px' height='50px'/>
             <p className="footer-links">
-              <a href="#" className="link-1">
+              <Link to="/" className="link-1">
                 Home
-              </a>
+              </Link>
+
+              <Link to="/">About</Link>
 
               <a href="#">Pricing</a>
-
-              <a href="#">About</a>
 
               <a href="#">Faq</a>
 
@@ -32,7 +33,7 @@ class Footer extends React.Component {
             <div>
               <a href='https://www.google.com/maps/place/Squid+St,+Portsmouth,+NH+03801/@43.021721,-70.79349,17z/data=!3m1!4b1!4m5!3m4!1s0x89e2c1cae2b65501:0xee600e9cbfdee808!8m2!3d43.021721!4d-70.791296' target="_blank"><i className="fa fa-map-marker"></i></a>
               <p>
-                <span>456 Squid St</span> Portsmouth, NH
+                <p>456 Squid St</p> <br></br>Portsmouth, NH
               </p>
             </div>
 
