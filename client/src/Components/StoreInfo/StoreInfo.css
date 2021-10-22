@@ -3,6 +3,12 @@
   display: grid;
   grid-template-columns: 50% 50%;
 }
+.store-info {
+  font-size: large;
+}
+.store-info-text {
+  margin: 3%;
+}
 
 .storeImage {
   border-radius: 20px;
@@ -11,15 +17,34 @@
   margin: 1vh;
 }
 
-.store-details {
-  display: flex;
-  align-items: center;
-}
-
 .store-reviews {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .date {
   margin: 0;
+}
+
+/* REVIEWS */
+.coffee-review {
+  border-bottom: 1px solid darkgray;
+  margin: 3% 2%;
+  padding: 3% 0;
+  height: 30%;
+}
+.light {
+  font-weight: lighter;
+  color: darkgray;
+}
+.coffee-type {
+  font-weight: lighter;
+  color: #007e5b;
+}
+.coffee-review-body {
+  margin: 5% 3%;
+}
+
+.review-info {
+  font-size: smaller;
 }

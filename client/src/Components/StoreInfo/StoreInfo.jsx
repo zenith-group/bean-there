@@ -14,21 +14,21 @@ const StoreInfo = ({ store, reviews, coffeeTypes }) => {
   let address = store.location.display_address.join(', ');
   return (
     <div className='store-information'>
-      <div className='store-details'>
+      <div className='row start align-center'>
         <img
           className='storeImage'
           src={store.image_url}
           alt={store.image_url}
         />
-        <div className='store-reviews-container'>
-          <h3>{store.name}</h3>
-          <h3>{address}</h3>
-          <h3>Status: {status}</h3>
-          <h3>Phone Number: {phoneNumber}</h3>
+        <div className='column start store-info'>
+          <div className='bold store-info-text'>{store.name}</div>
+          <div className='store-info-text'>{address}</div>
+          <div className='store-info-text'>Status: {status}</div>
+          <div className='store-info-text'>Phone Number: {phoneNumber}</div>
         </div>
       </div>
       <div className='store-reviews'>
-        <ReviewsList reviews={reviews} coffeeTypes={coffeeTypes}/>
+        <ReviewsList reviews={reviews} coffeeTypes={coffeeTypes} />
       </div>
     </div>
   );
