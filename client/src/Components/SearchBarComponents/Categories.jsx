@@ -9,12 +9,17 @@ const Categories = ({ categories, handleChange }) => {
       coffee_id: category.coffee_id,
     };
   });
+
   return (
     <Select
-      className='dark-text select'
+      className='select'
       isMulti
       onChange={handleChange}
       options={options}
+      theme={(theme) => ({
+        ...theme,
+        borderRadius: 0,
+      })}
     />
   );
 };
