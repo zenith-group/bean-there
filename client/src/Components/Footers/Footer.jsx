@@ -13,9 +13,7 @@ class Footer extends React.Component {
           <div className="footer-left">
           <img src={'./img/Bean_There.png'} alt='logo' width='50px' height='50px'/>
             <p className="footer-links">
-              <Link to="/" className="link-1">
-                Home
-              </Link>
+              <Link to="/" className="link-1">Home</Link>
 
               <Link to="/">About</Link>
 
@@ -26,7 +24,7 @@ class Footer extends React.Component {
               <a href="#">Contact</a>
             </p>
 
-            <p className="footer-company-name">Bean_There © 2021</p>
+            <p className="footer-company-about">Bean_There © 2021</p>
           </div>
 
           <div className="footer-center">
