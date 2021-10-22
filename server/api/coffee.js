@@ -8,7 +8,7 @@ module.exports = {
     let storeDetails = {};
     return axios
       .get(
-        `https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=${params.lat}&longitude=${params.lng}&term=${params.term}&limit=50&radius=20000`,
+        `https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=${params.lat}&longitude=${params.lng}&term=${params.term}&limit=50&radius=15000`,
         {
           headers: {
             'content-type': 'application/json',
