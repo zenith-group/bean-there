@@ -10,6 +10,7 @@ const StoreList = ({
   loggedin,
   storeRatings,
   coffeeRatings,
+  fetchUserReviews
 }) => {
   return (
     <li id='store-list' className='column'>
@@ -25,6 +26,7 @@ const StoreList = ({
             loggedin={loggedin}
             storeRatings={storeRatings}
             coffeeRatings={coffeeRatings}
+            fetchUserReviews={fetchUserReviews}
           />
         );
       })}
