@@ -121,14 +121,11 @@
   }
 }
 .headerProPic {
-  height: 100px;
-  /* width: 100px; */
-  /* z-index: -10; */
+  max-height: 100px;
 }
 
 .headerProfilePic {
   align-self: center;
-  /* margin: 1%; */
   border-radius: 50%;
   width: 90px;
   max-width: 90px;
