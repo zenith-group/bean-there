@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import KEYS from "/config.js";
-import { Paper, Typography, useMediaQuery } from "@material-ui/core";
-import Rating from "@material-ui/lab/Rating";
+import LocationMarker from './locationMarker'
 
 import useStyles from "./styles.js";
 
@@ -18,7 +17,7 @@ const Map = (props) => {
         bootstrapURLKeys={{ key: KEYS.google }}
         center={props.currentLocation}
         defaultCenter={{ lat: 0, lng: 0 }}
-        defaultZoom={15}
+        defaultZoom={12}
       >
         {props.store?.map((store, x) => (
           <div
@@ -26,23 +25,9 @@ const Map = (props) => {
             lat={store.coordinates.latitude}
             lng={store.coordinates.longitude}
             key={x}
+            onClick={e => props.select(store)}
           >
-            <Paper elevation={3} className={classes.paper}>
-              <Typography
-                className={classes.typography}
-                variant="subtitle2"
-                gutterBottom
-              >
-                {store.name}
-              </Typography>
-              <img className={classes.pointer} src={store.image_url} />
-              <Rating
-                name="read-only"
-                size="small"
-                value={Number(store.rating)}
-                readOnly
-              />
-            </Paper>
+            <LocationMarker store={store} key={x}/>
           </div>
         ))}
       </GoogleMapReact>
