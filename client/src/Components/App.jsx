@@ -57,11 +57,12 @@ class App extends React.Component {
   }
 
   updateSearch(term, coffeeList, location) {
+    location = location ||  { lat: 40.702501851176706, lng: -73.94245147705078 }
     Promise.resolve(
       this.setState({
         searchTerm: term,
         searchCoffeeList: coffeeList,
-        inputLocation: location,
+        currentLocation: location,
       })
     )
       .then(() => {
@@ -263,6 +264,7 @@ class App extends React.Component {
                 <Map
                   currentLocation={this.state.currentLocation}
                   store={Object.values(this.state.storeListObj)}
+                  select={this.selectStore}
                 />
               </div>
               <StoreInfo
