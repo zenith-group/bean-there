@@ -4,10 +4,11 @@ const reviews = require('../../database/models').reviews;
 
 module.exports = {
   list: (params) => {
+    console.log('params', params);
     let storeDetails = {};
     return axios
       .get(
-        `https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=${params.lat}&longitude=${params.lng}`,
+        `https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=${params.lat}&longitude=${params.lng}&term=${params.term}`,
         {
           headers: {
             'content-type': 'application/json',
@@ -16,6 +17,7 @@ module.exports = {
         }
       )
       .then((res) => {
+        console.log(res.data);
         let stores = [];
         for (let i = 0; i < res.data.businesses.length; i++) {
           let currentStore = res.data.businesses[i];
@@ -23,16 +25,16 @@ module.exports = {
           currentStore.reviews = [];
           storeDetails[currentStore.id] = currentStore;
         }
-        return Promise.all(stores)
-        .then(data => {
-          for (let i = 0; i < data.length; i++ ) {
+        return Promise.all(stores).then((data) => {
+          for (let i = 0; i < data.length; i++) {
             let currentStoreReviews = data[i].rows;
             if (currentStoreReviews[0] !== undefined) {
-              storeDetails[currentStoreReviews[0].store_id].reviews = currentStoreReviews;
+              storeDetails[currentStoreReviews[0].store_id].reviews =
+                currentStoreReviews;
             }
           }
           return storeDetails;
-        })
+        });
       })
       .catch((err) => {
         return err;

@@ -155,9 +155,15 @@ class App extends React.Component {
   }
 
   getYelp() {
-    let location = this.state.currentLocation
+    let location = this.state.currentLocation;
+    console.log(location);
+    let searchTerm = 'coffee';
+    if (this.state.searchTerm.length > 0) {
+      searchTerm = this.state.searchTerm;
+    }
+    console.log(searchTerm);
     axios
-      .get(`/coffee/${location.lat}/${location.lng}`)
+      .get(`/coffee/${location.lat}/${location.lng}?term=${searchTerm}`)
       .then((res) => {
         let result = [];
         for (let key in res.data) {
