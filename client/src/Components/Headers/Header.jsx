@@ -8,7 +8,13 @@ const Header = ({ loggedin, user, onClick, updateSearch, updateLocation, coffeeL
     <Link to='/'><img className='logo' src={'./img/Bean_There.png'} alt='logo' /></Link>
     <SearchBar updateSearch={updateSearch} updateLocation={updateLocation} coffeeList={coffeeList} changeLocation={changeLocation} submitted={submitted} geolocated={geolocated}/>
     <div className='nav-bar'>
-      {loggedin ? <Link to='/profile'><button>My Profile</button></Link> : <Link to='/login'><a className='logginButton'>
+      {loggedin ? <Link to='/profile'><a className='logginButton'>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        My Profile
+    </a></Link> : <Link to='/login'><a className='logginButton'>
         <span></span>
         <span></span>
         <span></span>
