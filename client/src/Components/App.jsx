@@ -260,10 +260,10 @@ class App extends React.Component {
                   allCoffeeType={this.state.allCoffeeList}
                   loggedin={this.state.loggedin}
                 />
-                {/* <Map
+                <Map
                   currentLocation={this.state.currentLocation}
                   store={Object.values(this.state.storeListObj)}
-                /> */}
+                />
               </div>
               <StoreInfo
                 store={this.state.selectedStore}
