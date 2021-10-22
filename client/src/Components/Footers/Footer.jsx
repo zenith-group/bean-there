@@ -16,8 +16,6 @@ class Footer extends React.Component {
                 Home
               </a>
 
-              <a href="#">Pricing</a>
-
               <a href="#">About</a>
 
               <a href="#">Faq</a>
@@ -25,7 +23,7 @@ class Footer extends React.Component {
               <a href="#">Contact</a>
             </p>
 
-            <p className="footer-company-name">Bean_There © 2021</p>
+            <p className="footer-company-about">Bean_There © 2021</p>
           </div>
 
           <div className="footer-center">
