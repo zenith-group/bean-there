@@ -9,6 +9,7 @@ import {
 import Input from './Input.jsx';
 import Categories from './Categories.jsx';
 import Location from './Location.jsx';
+import './SearchBar.css';
 
 class SearchBar extends React.Component {
   constructor(props) {
