@@ -131,7 +131,7 @@ button {
   border-radius: 50%;
   margin: 1%;
   margin-top: 2%;
-  margin-left: 2%;
+  margin-left: 5%;
   border-radius: 50%;
   width: 100px;
   max-width: 100px;
@@ -148,6 +148,7 @@ button {
 .store-tile-coffee-ratings {
   padding: 1%;
   border-radius: 5px;
+  height: 25%;
   max-height: 25%;
   overflow-y: auto;
   overflow-x: hidden;
