@@ -11,6 +11,13 @@ body {
   color: #007e5b;
 }
 
+.italic {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+
 button {
   height: 38px;
 }
@@ -79,8 +86,20 @@ button {
 .space-between {
   justify-content: space-between;
 }
+.start {
+  justify-content: flex-start;
+}
+.end {
+  justify-content: flex-end;
+}
 .center {
   justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.align-start {
+  align-items: flex-start;
 }
 .column {
   display: flex;
