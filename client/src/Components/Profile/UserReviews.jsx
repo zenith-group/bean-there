@@ -3,7 +3,7 @@ import StarRatings from 'react-star-ratings'
 
 const UserReviews = ({ reviews }) => (
   <div id='user-review-container'>
-    <h2>Account Activities</h2>
+    <h2>My Reviews</h2>
     {reviews.map((review, index) => (
       <div className='review-container' key={`reviews_${index}`}>
         <h3 className='store-name'>{review.store_name}</h3>
