@@ -5,8 +5,6 @@ import LocationMarker from './locationMarker'
 
 import useStyles from "./styles.js";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 const Map = (props) => {
   const classes = useStyles();
 
@@ -18,6 +16,10 @@ const Map = (props) => {
         center={props.currentLocation}
         defaultCenter={{ lat: 0, lng: 0 }}
         defaultZoom={14}
+<<<<<<< HEAD
+=======
+        onChange={e => props.changeLocation(e.center.lat, e.center.lng, true)}
+>>>>>>> 1e8f6ac6aa632d0a248cc3c3c0961d11d69625b8
       >
         {props.store?.map((store, x) => (
           <div
