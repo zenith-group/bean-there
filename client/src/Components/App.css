@@ -143,7 +143,6 @@ button {
   background-color: white;
   border-radius: 5px;
   margin: 5px;
-  height: 30%;
 }
 .store-tile-image {
   align-self: center;
@@ -163,12 +162,13 @@ button {
 
 .tile {
   background-color: #eef4ed;
+  height: 200px;
 }
 .store-tile-coffee-ratings {
   padding: 1%;
   border-radius: 5px;
-  height: 25%;
-  max-height: 25%;
+  height: 50px;
+  max-height: 60px;
   overflow-y: auto;
   overflow-x: hidden;
 }
