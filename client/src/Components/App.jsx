@@ -50,10 +50,16 @@ class App extends React.Component {
     this.getYelp = this.getYelp.bind(this);
   }
 
-  changeLocation(lat, lng) {
-    this.setState({
-      currentLocation: { lat: lat, lng: lng },
-    });
+  changeLocation(lat, lng, mapMoved) {
+    if(!mapMoved){
+      this.setState({
+        currentLocation: { lat: lat, lng: lng },
+      });
+    } else {
+      this.setState({
+        currentLocation: { lat: lat, lng: lng },
+      }, () => { this.getYelp() });
+    }
   }
 
   updateSearch(term, coffeeList, location) {
@@ -265,6 +271,7 @@ class App extends React.Component {
                   currentLocation={this.state.currentLocation}
                   store={Object.values(this.state.storeListObj)}
                   select={this.selectStore}
+                  changeLocation={this.changeLocation.bind(this)}
                 />
               </div>
               <StoreInfo
