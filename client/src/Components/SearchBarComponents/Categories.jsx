@@ -19,7 +19,9 @@ const Categories = ({ categories, handleChange }) => {
       theme={(theme) => ({
         ...theme,
         borderRadius: 0,
+        fontSize: '24px'
       })}
+      placeholder='Select Coffee Type'
     />
   );
 };

@@ -4,7 +4,6 @@ const reviews = require('../../database/models').reviews;
 
 module.exports = {
   list: (params) => {
-    console.log('params', params);
     let storeDetails = {};
     return axios
       .get(
@@ -17,7 +16,6 @@ module.exports = {
         }
       )
       .then((res) => {
-        console.log(res.data);
         let stores = [];
         for (let i = 0; i < res.data.businesses.length; i++) {
           let currentStore = res.data.businesses[i];

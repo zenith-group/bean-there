@@ -5,7 +5,7 @@ import './Header.css';
 
 const Header = ({ loggedin, user, onClick, updateSearch, updateLocation, coffeeList, changeLocation, submitted }) => (
   <div id='header' className='header'>
-    <Link to='/'><img className='logo' src={'./img/Bean_There.png'} alt='logo' /></Link>
+    <Link to='/'><img className='logo' src={'./img/Bean_There.GIF'} alt='logo' /></Link>
     <SearchBar updateSearch={updateSearch} updateLocation={updateLocation} coffeeList={coffeeList} changeLocation={changeLocation} submitted={submitted} />
     <div className='nav-bar'>
       {loggedin ? <Link to='/profile'><a className='logginButton'>
