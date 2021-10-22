@@ -1,8 +1,9 @@
 import React,{useState} from "react";
 import { Paper, Typography, useMediaQuery } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOn';
 import useStyles from "./styles.js";
+
 
 const LocationMarker = ({store}) => {
 
@@ -31,7 +32,7 @@ const LocationMarker = ({store}) => {
       )
     } else {
       return (
-        <LocationOnOutlinedIcon color='red' fontSize='large' onMouseEnter={e => setdisplay(true)} />
+        <LocationOnOutlinedIcon  style={{fill: 'red'}} fontSize='large' onMouseEnter={e => setdisplay(true)} />
       )
     }
 }
