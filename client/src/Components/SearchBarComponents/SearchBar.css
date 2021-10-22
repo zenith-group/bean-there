@@ -2,7 +2,15 @@
   display: flex;
   align-items: center;
   color: #1E1E24;
+  font-size: 12px;
+  font-family: Roboto, sans-serif;
 }
+
+#help-msg {
+  margin: 0;
+  font-style: italic;
+}
+
 .search-bar input {
   height: 40px;
   width: 350px;
@@ -63,13 +71,17 @@
 .css-1s2u09g-control,
 .css-319lph-ValueContainer,
 .css-1hb7zxy-IndicatorsContainer,
-.css-x19aeh-control {
+.css-x19aeh-control,
+.css-l7s834-control {
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
   padding: 0;
   max-height: 52px;
   margin: 0;
+  overflow: scroll;
+  color: #1E1E24;
+  font-size: 12px;
 }
 
 .search-bar .css-x19aeh-control,
@@ -80,8 +92,8 @@
 }
 
 #header .css-b62m3t-container {
-  width: 150px;
+  width: 200px;
 }
 #header input {
-  width: 200px;
+  width: 100px;
 }

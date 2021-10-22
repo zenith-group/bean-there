@@ -4,7 +4,7 @@ import './Header.css';
 
 const HomeHeader = ({ loggedin, user, onClick }) => (
   <div id='home-header' className='header'>
-    <Link to='/'><img className='logo' src={'./img/Bean_There.png'} alt='logo' /></Link>
+    <Link to='/'><img className='logo' src={'./img/Bean_There.GIF'} alt='logo' /></Link>
     <div className='nav-bar'>
       {loggedin ? <Link to='/profile'><a className='logginButton'>
         <span></span>
