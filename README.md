@@ -15,6 +15,10 @@ UI Owner: Shavkat Shavkiew <br/>
 UI Owner: Ye Feng Chen <br/>
 ## Description
 <img src='client/public/img/recording_01.gif' alt='recording_01'/>
+<img src='client/public/img/recording_02.gif' alt='recording_02'/>
+<img src='client/public/img/recording_03.gif' alt='recording_03'/>
+<img src='client/public/img/recording_04.gif' alt='recording_04'/>
+<img src='client/public/img/recording_05.gif' alt='recording_05'/>
 
 ## Technologies Used
 ### Front-End Development
