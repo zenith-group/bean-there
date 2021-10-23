@@ -8,11 +8,11 @@
 
 
 ## Team Members & Roles
-Product Manager : Charles Ewing 
-Product Manager : Chris Chung
-Architecture Owner: Jian Zhang
-UI Owner: Shavkat Shavkiew
-UI Owner: Ye Feng Chen
+Product Manager : Charles Ewing <br/>
+Product Manager : Chris Chung <br/>
+Architecture Owner: Jian Zhang <br/>
+UI Owner: Shavkat Shavkiew <br/>
+UI Owner: Ye Feng Chen <br/>
 ## Description
 
 
