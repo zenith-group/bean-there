@@ -14,7 +14,7 @@ Architecture Owner: Jian Zhang <br/>
 UI Owner: Shavkat Shavkiew <br/>
 UI Owner: Ye Feng Chen <br/>
 ## Description
-
+<img src='client/public/img/recording_01.gif'/>
 
 ## Technologies Used
 ### Front-End Development
