@@ -8,12 +8,15 @@
 
 
 ## Team Members & Roles
-
+Product Manager : Charles Ewing 
+Product Manager : Chris Chung
+Architecture Owner: Jian Zhang
+UI Owner: Shavkat Shavkiew
+UI Owner: Ye Feng Chen
 ## Description
 
 
 ## Technologies Used
-
 ### Front-End Development
 JavaScript <img align="left" alt="JavaScript" width="30px" src="https://raw.githubusercontent.com/jmnote/z-icons/master/svg/javascript.svg" />
 <br />
