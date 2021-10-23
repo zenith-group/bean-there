@@ -52,26 +52,30 @@ class SearchBar extends React.Component {
       redirect = <Redirect to='/search' />;
     }
     return (
-      <div>
-        <h1 id='help-msg'>Let us help you wake up</h1>
-        <form
-          className='search-bar row center'
-          onSubmit={this.handleSubmit}>
-          <Input input={this.state.input} handleChange={this.handleChange} />
-          <Categories
-            categories={this.props.coffeeList}
-            handleChange={this.categoriesChange}
-          />
-          <Location
-            location={this.state.location}
-            changeLocation={this.changeLocation.bind(this)}
-          />
-          <i onClick={this.props.updateLocation}>⌖</i>
-          <button onClick={this.handleSubmit}>Search</button>
-          {redirect}
-        </form>
-
-      </div>
+      <form
+        className='search-bar row center'
+        onSubmit={this.handleSubmit}
+      >
+        <Input input={this.state.input} handleChange={this.handleChange} />
+        <Categories
+          categories={this.props.coffeeList}
+          handleChange={this.categoriesChange}
+        />
+        <Location
+          location={this.state.location}
+          changeLocation={this.changeLocation.bind(this)}
+          geolocated={this.props.geolocated}
+        />
+        <i onClick={e => {
+          this.props.updateLocation((result) => {
+            this.setState({
+              location: result
+            })
+          })
+        }}>⌖</i>
+        <button onClick={this.handleSubmit}>Search</button>
+        {redirect}
+      </form>
     );
   }
 }
